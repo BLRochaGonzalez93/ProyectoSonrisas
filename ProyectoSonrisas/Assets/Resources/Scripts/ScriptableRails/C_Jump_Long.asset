@@ -17,5 +17,5 @@ MonoBehaviour:
   type: 3
   canBeSelected: 1
   countForCD: 1
-  cooldown: 3
+  cooldown: 0
   prefab: {fileID: 0}

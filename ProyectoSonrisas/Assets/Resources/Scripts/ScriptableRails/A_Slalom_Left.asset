@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: 8
   railName: Slalom_Left
   type: 1
-  canBeSelected: 1
+  canBeSelected: 0
   countForCD: 1
-  cooldown: 3
+  cooldown: 2
   prefab: {fileID: 0}

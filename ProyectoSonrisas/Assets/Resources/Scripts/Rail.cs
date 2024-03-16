@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Splines;
 
 public enum RailType
 {
@@ -15,8 +16,9 @@ public class Rail : ScriptableObject
     public RailType type;
     public bool canBeSelected = true;
     public bool countForCD = true;
-    public int cooldown = 3;
-    public GameObject prefab;
+    public int cooldown = 0;
+    public GameObject MeshPrefab;
+    public SplineContainer splinePrefab;
 
     public static int SortByID(Rail r1, Rail r2)
     {
