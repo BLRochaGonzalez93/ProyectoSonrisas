@@ -10,6 +10,9 @@ public class RailPositionerManager : MonoBehaviour
     public Rail currentRail, rail = null, previousRail = null;
     public GameObject currentMeshRail, meshRail, previousMeshRail;
     public int exitRotation = 0;
+    public float speed;
+    public float timeValue;
+
 
     void Start()
     {
@@ -18,9 +21,18 @@ public class RailPositionerManager : MonoBehaviour
 
     void Update()
     {
+        speed = transform.GetComponent<SplineAnimate>().MaxSpeed;
+
+        //timeValue = transform.GetComponent<SplineAnimate>().NormalizedTime;
+        transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
+
         spawnTimer += Time.deltaTime;
-        if (spawnTimer > 2)
+        if (spawnTimer > 1f)
         {
+            Debug.Log(spline.CalculateLength());
+            Debug.Log(spline.CalculateLength()-30f);
+            Debug.Log(spline.CalculateLength()-30f);
+
             //Pruebas
             /*if (previousRail != null)
             {
