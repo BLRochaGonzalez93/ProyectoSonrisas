@@ -19,6 +19,8 @@ public class Rail : ScriptableObject
     public int cooldown = 0;
     public GameObject MeshPrefab;
     public SplineContainer splinePrefab;
+    [Range(-4, 4)]
+    public int finalRotation = 0;
 
     public static int SortByID(Rail r1, Rail r2)
     {

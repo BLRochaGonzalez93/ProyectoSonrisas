@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -8,27 +9,29 @@ public class RailPositionerManager : MonoBehaviour
     public GameObject manager;
     public Rail currentRail, rail = null, previousRail = null;
     public GameObject currentMeshRail, meshRail, previousMeshRail;
+    public int exitRotation = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
         spline.transform.position = Vector3.zero;
     }
 
-    // Update is called once per frame
     void Update()
     {
         spawnTimer += Time.deltaTime;
         if (spawnTimer > 2)
         {
-            //Definitivo
-            //rail = manager.GetComponent<RailSelectorManagement>().RailSelector();
-
             //Pruebas
+            /*if (previousRail != null)
+            {
+                spline.Spline.RemoveAt(0);
+            }*/
             Destroy(previousMeshRail);
             int rng = UnityEngine.Random.Range(0, 3);
-            rail = manager.GetComponent<RailSelectorManagement>().railPrefabs[rng];
 
+            //Definitivo
+            //rail = manager.GetComponent<RailSelectorManagement>().RailSelector();
+            rail = manager.GetComponent<RailSelectorManagement>().railPrefabs[rng];
 
             meshRail = Instantiate(rail.MeshPrefab,
                                 new Vector3(currentMeshRail.transform.GetChild(1).transform.position.x,
@@ -38,21 +41,27 @@ public class RailPositionerManager : MonoBehaviour
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.y,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.z,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.w));
-            /*
-            Spline tempSpline = Instantiate(rail.splinePrefab.spl,
-                                new Vector3(currentMeshRail.transform.GetChild(1).transform.position.x,
-                                            currentMeshRail.transform.GetChild(1).transform.position.y,
-                                            currentMeshRail.transform.GetChild(1).transform.position.z),
-                                new Quaternion(currentMeshRail.transform.GetChild(1).transform.rotation.x,
-                                                currentMeshRail.transform.GetChild(1).transform.rotation.y,
-                                                currentMeshRail.transform.GetChild(1).transform.rotation.z,
-                                                currentMeshRail.transform.GetChild(1).transform.rotation.w));
-            */
 
-            //BezierKnot kn = new BezierKnot(new float3(-70f, 0f, -70f), );
+            BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
+                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentIn,
+                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentOut,
+                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].Rotation);
+            spline.Splines.ToArray()[0].Add(kn);
 
-            previousMeshRail = currentMeshRail;
+            int fRot = exitRotation + rail.finalRotation;
+            if (fRot > 7)
+            {
+                fRot -= 8;
+            }
+            else if (fRot < 0)
+            {
+                fRot += 8;
+            }
+
+            exitRotation = fRot;
+
             previousRail = currentRail;
+            previousMeshRail = currentMeshRail;
             currentMeshRail = meshRail;
             currentRail = rail;
 

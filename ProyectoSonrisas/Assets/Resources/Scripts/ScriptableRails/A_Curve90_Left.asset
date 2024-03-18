@@ -20,3 +20,4 @@ MonoBehaviour:
   cooldown: 0
   MeshPrefab: {fileID: 7070258879395602777, guid: 1c8ece4546f2c0944a101ffa0b1104eb, type: 3}
   splinePrefab: {fileID: 175180179573100238, guid: bb17d6ea31774c441a1532c28b929e3b, type: 3}
+  finalRotation: -2

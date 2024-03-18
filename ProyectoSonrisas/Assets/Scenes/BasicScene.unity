@@ -157,8 +157,8 @@ MonoBehaviour:
   m_PlayOnAwake: 1
   m_LoopMode: 1
   m_Method: 1
-  m_Duration: 225.1424
-  m_MaxSpeed: 1
+  m_Duration: 2.142857
+  m_MaxSpeed: 35
   m_EasingMode: 0
   m_AlignmentMode: 1
   m_ObjectForwardAxis: 2
@@ -173,7 +173,7 @@ Transform:
   m_GameObject: {fileID: 19276073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710665, z: -0, w: 0.7071069}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -201,6 +201,7 @@ MonoBehaviour:
   currentMeshRail: {fileID: 1895635219}
   meshRail: {fileID: 0}
   previousMeshRail: {fileID: 6281958451308579922, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
+  exitRotation: 0
 --- !u!1001 &298297886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -724,17 +725,17 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 0
+        x: 5
         y: 0
         z: 0
       TangentIn:
         x: 0
         y: 0
-        z: -1
+        z: -45.88
       TangentOut:
         x: 0
         y: 0
-        z: 1
+        z: 45.88
       Rotation:
         value:
           x: 0
@@ -748,42 +749,6 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -1
-      TangentOut:
-        x: 0
-        y: 0
-        z: 1
-      Rotation:
-        value:
-          x: 0
-          y: -0.70710653
-          z: -0
-          w: 0.707107
-    - Position:
-        x: -70
-        y: 0
-        z: 0
-      TangentIn:
-        x: 0
-        y: 0
-        z: -45.88002
-      TangentOut:
-        x: 0
-        y: 0
-        z: 45.88002
-      Rotation:
-        value:
-          x: 0
-          y: -0.70710677
-          z: -0
-          w: 0.70710677
-    - Position:
-        x: -140
-        y: 0
-        z: -70
-      TangentIn:
-        x: 0
-        y: 0
         z: -51.37704
       TangentOut:
         x: 0
@@ -792,14 +757,10 @@ MonoBehaviour:
       Rotation:
         value:
           x: 0
-          y: 0.99996585
-          z: 0
-          w: 0.008272747
+          y: -0.70710653
+          z: -0
+          w: 0.707107
     m_MetaData:
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
     - Mode: 2
       Tension: 0.5
     - Mode: 2
