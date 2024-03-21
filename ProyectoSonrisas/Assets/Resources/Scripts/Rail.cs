@@ -18,7 +18,7 @@ public class Rail : ScriptableObject
     public bool countForCD = true;
     public int cooldown = 0;
     public GameObject MeshPrefab;
-    public SplineContainer splinePrefab;
+    public SplineAdvanced splinePrefab;
     [Range(-4, 4)]
     public int finalRotation = 0;
 

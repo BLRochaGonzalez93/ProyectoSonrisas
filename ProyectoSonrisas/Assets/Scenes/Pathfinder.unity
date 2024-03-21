@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 19276075}
-  - component: {fileID: 19276074}
+  - component: {fileID: 19276077}
   - component: {fileID: 19276076}
   m_Layer: 0
   m_Name: Wagon
@@ -141,29 +141,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &19276074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 19276073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29a074d529cf945029ef7cf40540c9df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Target: {fileID: 3144786820022937792}
-  m_PlayOnAwake: 1
-  m_LoopMode: 1
-  m_Method: 1
-  m_Duration: 37.5
-  m_MaxSpeed: 2
-  m_EasingMode: 0
-  m_AlignmentMode: 1
-  m_ObjectForwardAxis: 2
-  m_ObjectUpAxis: 1
-  m_StartOffset: 0
 --- !u!4 &19276075
 Transform:
   m_ObjectHideFlags: 0
@@ -193,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnTimer: 0
-  spline: {fileID: 3144786820022937792}
+  spline: {fileID: 6281958451991825180}
   manager: {fileID: 1770346997}
   currentRail: {fileID: 11400000, guid: 702470566b104284da59144f17a6bab9, type: 2}
   rail: {fileID: 0}
@@ -202,8 +179,23 @@ MonoBehaviour:
   meshRail: {fileID: 0}
   previousMeshRail: {fileID: 6281958451308579922, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
   exitRotation: 0
-  speed: 2
+  speed: 5
   timeValue: 0
+--- !u!114 &19276077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19276073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f04a035dc6a2446ab3808051addd8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spline: {fileID: 6281958451991825180}
+  speed: 5
+  movementType: 1
 --- !u!1001 &298297886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,86 +690,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3494382604788187090, guid: 574b37d7c92ff8a42884e65a276de646, type: 3}
   m_PrefabInstance: {fileID: 760740515}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3144786820022937792
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6281958451991825179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dab5c7d4c32e743048dfca98e2d5914f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Spline:
-    m_EditModeType: 1
-    m_Knots: []
-    m_MetaData: []
-    m_Closed: 0
-    m_IntData:
-      m_Data: []
-    m_FloatData:
-      m_Data: []
-    m_Float4Data:
-      m_Data: []
-    m_ObjectData:
-      m_Data: []
-  m_Splines:
-  - m_EditModeType: 1
-    m_Knots:
-    - Position:
-        x: 5
-        y: 0
-        z: 0
-      TangentIn:
-        x: 0
-        y: 0
-        z: -45.88
-      TangentOut:
-        x: 0
-        y: 0
-        z: 45.88
-      Rotation:
-        value:
-          x: 0
-          y: -0.70710665
-          z: -0
-          w: 0.7071069
-    - Position:
-        x: -70
-        y: 0
-        z: 0
-      TangentIn:
-        x: 0
-        y: 0
-        z: -51.37704
-      TangentOut:
-        x: 0
-        y: 0
-        z: 51.37704
-      Rotation:
-        value:
-          x: 0
-          y: -0.70710653
-          z: -0
-          w: 0.707107
-    m_MetaData:
-    - Mode: 2
-      Tension: 0.5
-    - Mode: 2
-      Tension: 0.5
-    m_Closed: 0
-    m_IntData:
-      m_Data: []
-    m_FloatData:
-      m_Data: []
-    m_Float4Data:
-      m_Data: []
-    m_ObjectData:
-      m_Data: []
-  m_Knots:
-    m_KnotsLink: []
 --- !u!4 &3743419909450782377
 Transform:
   m_ObjectHideFlags: 0
@@ -802,7 +714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3743419909450782377}
-  - component: {fileID: 3144786820022937792}
+  - component: {fileID: 6281958451991825180}
   m_Layer: 0
   m_Name: S_Straight_SplinePrefab
   m_TagString: Untagged
@@ -810,6 +722,30 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6281958451991825180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6281958451991825179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b28f5fcf19e7e408639f5daf8b292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dots: {fileID: 9129474473005552322, guid: 70917aa64ae1c044c8b0c6aeee79b6b4, type: 3}
+  normal: {x: 0, y: 0, z: -10.56}
+  closedLoop: 0
+  anchorList:
+  - position: {x: 0, y: 0, z: 0}
+    handleAPosition: {x: 45.88, y: 0, z: 0}
+    handleBPosition: {x: -35, y: 0, z: 0}
+  - position: {x: -70, y: 0, z: 0}
+    handleAPosition: {x: -35, y: 0, z: 0}
+    handleBPosition: {x: -105, y: 0, z: 0}
+  pointList: []
+  splineLength: 70
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

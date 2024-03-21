@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SplineDone))]
+[CustomEditor(typeof(SplineAdvanced))]
 public class SplineEditor : Editor {
 
     public override void OnInspectorGUI() {
         serializedObject.Update();
 
-        SplineDone spline = (SplineDone)target;
+        SplineAdvanced spline = (SplineAdvanced)target;
 
         if (GUILayout.Button("Add Anchor")) {
             Undo.RecordObject(spline, "Add Anchor");
@@ -28,6 +28,9 @@ public class SplineEditor : Editor {
         EditorGUILayout.PropertyField(serializedObject.FindProperty("dots"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("normal"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("closedLoop"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("anchorList"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("pointList"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("splineLength"));
 
         serializedObject.ApplyModifiedProperties();
 
@@ -46,13 +49,13 @@ public class SplineEditor : Editor {
     }
 
     public void OnSceneGUI() {
-        SplineDone spline = (SplineDone)target;
+        SplineAdvanced spline = (SplineAdvanced)target;
 
         Vector3 transformPosition = spline.transform.position;
 
-        List<SplineDone.Anchor> anchorList = spline.GetAnchorList();
+        List<SplineAdvanced.Anchor> anchorList = spline.GetAnchorList();
         if (anchorList != null) {
-            foreach (SplineDone.Anchor anchor in spline.GetAnchorList()) {
+            foreach (SplineAdvanced.Anchor anchor in spline.GetAnchorList()) {
                 Handles.color = Color.white;
                 Handles.DrawWireCube(transformPosition + anchor.position, Vector3.one * .5f);
 
@@ -96,15 +99,15 @@ public class SplineEditor : Editor {
 
             // Draw Bezier
             for (int i = 0; i < spline.GetAnchorList().Count - 1; i++) {
-                SplineDone.Anchor anchor = spline.GetAnchorList()[i];
-                SplineDone.Anchor nextAnchor = spline.GetAnchorList()[i + 1];
+                SplineAdvanced.Anchor anchor = spline.GetAnchorList()[i];
+                SplineAdvanced.Anchor nextAnchor = spline.GetAnchorList()[i + 1];
                 Handles.DrawBezier(transformPosition + anchor.position, transformPosition + nextAnchor.position, transformPosition + anchor.handleBPosition, transformPosition + nextAnchor.handleAPosition, Color.grey, null, 3f);
             }
 
             if (spline.GetClosedLoop()) {
                 // Spline is Closed Loop
-                SplineDone.Anchor anchor = spline.GetAnchorList()[spline.GetAnchorList().Count - 1];
-                SplineDone.Anchor nextAnchor = spline.GetAnchorList()[0];
+                SplineAdvanced.Anchor anchor = spline.GetAnchorList()[spline.GetAnchorList().Count - 1];
+                SplineAdvanced.Anchor nextAnchor = spline.GetAnchorList()[0];
                 Handles.DrawBezier(transformPosition + anchor.position, transformPosition + nextAnchor.position, transformPosition + anchor.handleBPosition, transformPosition + nextAnchor.handleAPosition, Color.grey, null, 3f);
             }
         }

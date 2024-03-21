@@ -1,11 +1,12 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
+using static SplineAdvanced;
 
 public class RailPositionerManager : MonoBehaviour
 {
     public float spawnTimer;
-    public SplineContainer spline;
+    public SplineAdvanced spline;
     public GameObject manager;
     public Rail currentRail, rail = null, previousRail = null;
     public GameObject currentMeshRail, meshRail, previousMeshRail;
@@ -21,24 +22,22 @@ public class RailPositionerManager : MonoBehaviour
 
     void Update()
     {
-        speed = transform.GetComponent<SplineAnimate>().MaxSpeed;
+        speed = transform.GetComponent<SplineFollower>().speed;
 
         //timeValue = transform.GetComponent<SplineAnimate>().NormalizedTime;
-        transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
+        //transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
 
         spawnTimer += Time.deltaTime;
-        if (spawnTimer > 1f)
+        if (spawnTimer > 5f)
         {
-            Debug.Log(spline.CalculateLength());
-            Debug.Log(spline.CalculateLength()-30f);
-            Debug.Log(spline.CalculateLength()-30f);
+            
 
             //Pruebas
             /*if (previousRail != null)
             {
                 spline.Spline.RemoveAt(0);
             }*/
-            Destroy(previousMeshRail);
+            //Destroy(previousMeshRail);
             int rng = UnityEngine.Random.Range(0, 3);
 
             //Definitivo
@@ -54,11 +53,17 @@ public class RailPositionerManager : MonoBehaviour
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.z,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.w));
 
-            BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
+            spline.AddAnchor();
+            Anchor newAnchor = spline.GetAnchorAtIndex(spline.GetAnchorList().Count-1);
+
+            spline.SetAnchorPosition(,);
+
+           /* BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentIn,
                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentOut,
                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].Rotation);
             spline.Splines.ToArray()[0].Add(kn);
+           */
 
             int fRot = exitRotation + rail.finalRotation;
             if (fRot > 7)

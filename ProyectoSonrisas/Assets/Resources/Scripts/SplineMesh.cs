@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class SplineMesh : MonoBehaviour {
 
-    [SerializeField] private SplineDone spline;
+    [SerializeField] private SplineAdvanced spline;
     [SerializeField] private float meshWidth = 1.5f;
 
     private Mesh mesh;
     private MeshFilter meshFilter;
 
     private void Awake() {
-        if (spline == null) spline = GetComponent<SplineDone>();
+        if (spline == null) spline = GetComponent<SplineAdvanced>();
         meshFilter = GetComponent<MeshFilter>();
 
         transform.position = Vector3.zero;
@@ -37,14 +37,14 @@ public class SplineMesh : MonoBehaviour {
             mesh = null;
         }
 
-        List<SplineDone.Point> pointList = spline.GetPointList();
+        List<SplineAdvanced.Point> pointList = spline.GetPointList();
         if (pointList.Count > 2) {
-            SplineDone.Point point = pointList[0];
-            SplineDone.Point secondPoint = pointList[1];
+            SplineAdvanced.Point point = pointList[0];
+            SplineAdvanced.Point secondPoint = pointList[1];
             mesh = MeshUtils.CreateLineMesh(point.position - transform.position, secondPoint.position - transform.position, point.normal, meshWidth);
 
             for (int i = 2; i < pointList.Count; i++) {
-                SplineDone.Point thisPoint = pointList[i];
+                SplineAdvanced.Point thisPoint = pointList[i];
                 MeshUtils.AddLinePoint(mesh, thisPoint.position - transform.position, thisPoint.forward, point.normal, meshWidth);
             }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using CodeMonkey.Utils;
 
-public class SplineDone : MonoBehaviour {
+public class SplineAdvanced : MonoBehaviour {
 
     private static readonly Vector3 normal2D = new Vector3(0, 0, -1f);
 
@@ -14,14 +14,14 @@ public class SplineDone : MonoBehaviour {
     [SerializeField] private Vector3 normal = new Vector3(0, 0, -1);
     [SerializeField] private bool closedLoop;
     [SerializeField] private List<Anchor> anchorList;
+    [SerializeField] private List<Point> pointList;
+    [SerializeField] private float splineLength;
 
     private float moveDistance;
     private float pointAmountInCurve;
     private float pointAmountPerUnitInCurve = 2f;
 
 
-    private List<Point> pointList;
-    private float splineLength;
 
     private void Awake() {
         splineLength = GetSplineLength();
@@ -30,6 +30,11 @@ public class SplineDone : MonoBehaviour {
 
     private void Start() {
         //PrintPath();
+    }
+
+    private void Update()
+    {
+        SetupPointList();
     }
 
     private Vector3 QuadraticLerp(Vector3 a, Vector3 b, Vector3 c, float t) {
@@ -131,14 +136,14 @@ public class SplineDone : MonoBehaviour {
             lastPosition = GetPositionAt(t);
 
             if (splineUnitDistance >= unitDistance) {
-                /*
                 float remainingDistance = splineUnitDistance - unitDistance;
                 Debug.Log(remainingDistance + " " + unitDistance + " " + splineUnitDistance + " " + t);
                 Debug.Log(t - (remainingDistance / splineLength));
                 return GetPositionAt(t - (remainingDistance / splineLength));
-                */
+                /*
                 Vector3 direction = (GetPositionAt(t) - GetPositionAt(t - incrementAmount)).normalized;
                 return GetPositionAt(t) + direction * (unitDistance - splineUnitDistance);
+                */
             }
         }
 
@@ -246,6 +251,11 @@ public class SplineDone : MonoBehaviour {
         return anchorList;
     }
 
+    public Anchor GetAnchorAtIndex(int index)
+    {
+        return anchorList[index];
+    }
+
     public void AddAnchor() {
         if (anchorList == null) anchorList = new List<Anchor>();
 
@@ -255,6 +265,15 @@ public class SplineDone : MonoBehaviour {
             handleAPosition = lastAnchor.handleAPosition + new Vector3(1, 1, 0),
             handleBPosition = lastAnchor.handleBPosition + new Vector3(1, 1, 0),
         });
+        SetDirty();
+    }
+
+    public void SetAnchorPosition(int index, Vector3 position, Vector3 handleAPosition, Vector3 handleBPosition)
+    {
+        Anchor lastAnchor = anchorList[index];
+        lastAnchor.position = anchorList[index - 1].position + position;
+        lastAnchor.handleAPosition = anchorList[index - 1].handleAPosition + handleAPosition;
+        lastAnchor.handleBPosition = anchorList[index - 1].handleBPosition + handleBPosition;
     }
 
     public void RemoveLastAnchor() {

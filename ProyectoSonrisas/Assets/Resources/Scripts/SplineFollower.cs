@@ -9,8 +9,8 @@ public class SplineFollower : MonoBehaviour {
         Units
     }
 
-    [SerializeField] private SplineDone spline;
-    [SerializeField] private float speed = 1f;
+    [SerializeField] private SplineAdvanced spline;
+    public float speed = 1f;
     [SerializeField] private MovementType movementType;
 
     private float moveAmount;
@@ -36,10 +36,12 @@ public class SplineFollower : MonoBehaviour {
             case MovementType.Normalized:
                 transform.position = spline.GetPositionAt(moveAmount);
                 transform.forward = spline.GetForwardAt(moveAmount);
+                maxMoveAmount = 1f;
                 break;
             case MovementType.Units:
                 transform.position = spline.GetPositionAtUnits(moveAmount);
                 transform.forward = spline.GetForwardAtUnits(moveAmount);
+                maxMoveAmount = spline.GetSplineLength();
                 break;
         }
     }
