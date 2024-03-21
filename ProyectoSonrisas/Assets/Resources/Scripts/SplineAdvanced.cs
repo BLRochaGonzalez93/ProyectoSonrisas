@@ -268,6 +268,13 @@ public class SplineAdvanced : MonoBehaviour {
         SetDirty();
     }
 
+    public void AddAnchor(Anchor newAnchor)
+    {
+        if (anchorList == null) anchorList = new List<Anchor>();
+        anchorList.Add(newAnchor);
+        SetDirty();
+    }
+
     public void SetAnchorPosition(int index, Vector3 position, Vector3 handleAPosition, Vector3 handleBPosition)
     {
         Anchor lastAnchor = anchorList[index];
@@ -276,10 +283,18 @@ public class SplineAdvanced : MonoBehaviour {
         lastAnchor.handleBPosition = anchorList[index - 1].handleBPosition + handleBPosition;
     }
 
+    public void SetAnchorValues(Anchor anchor, Vector3 position, Vector3 handleAPosition, Vector3 handleBPosition)
+    {
+        anchor.position = position;
+        anchor.handleAPosition = handleAPosition;
+        anchor.handleBPosition = handleBPosition;
+    }
+
     public void RemoveLastAnchor() {
         if (anchorList == null) anchorList = new List<Anchor>();
 
         anchorList.RemoveAt(anchorList.Count - 1);
+        SetDirty();
     }
 
 
@@ -297,6 +312,7 @@ public class SplineAdvanced : MonoBehaviour {
             anchor.handleAPosition = new Vector3(anchor.handleAPosition.x, anchor.handleAPosition.y, 0f);
             anchor.handleBPosition = new Vector3(anchor.handleBPosition.x, anchor.handleBPosition.y, 0f);
         }
+        SetDirty();
     }
 
     public void SetAllYZero() {
@@ -305,6 +321,7 @@ public class SplineAdvanced : MonoBehaviour {
             anchor.handleAPosition = new Vector3(anchor.handleAPosition.x, 0f, anchor.handleAPosition.z);
             anchor.handleBPosition = new Vector3(anchor.handleBPosition.x, 0f, anchor.handleBPosition.z);
         }
+        SetDirty();
     }
 
     public void SetDirty() {

@@ -22,7 +22,7 @@ public class RailPositionerManager : MonoBehaviour
 
     void Update()
     {
-        speed = transform.GetComponent<SplineFollower>().speed;
+        //speed = transform.GetComponent<SplineFollower>().speed;
 
         //timeValue = transform.GetComponent<SplineAnimate>().NormalizedTime;
         //transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
@@ -53,10 +53,25 @@ public class RailPositionerManager : MonoBehaviour
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.z,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.w));
 
-            spline.AddAnchor();
-            Anchor newAnchor = spline.GetAnchorAtIndex(spline.GetAnchorList().Count-1);
+            //Anchor newAnchor = spline.GetAnchorAtIndex(spline.GetAnchorList().Count-1);
 
-            spline.SetAnchorPosition(,);
+
+            Anchor newAnchor = new Anchor();
+            Vector3 newPosition, newHandleAPosition, newHandleBPosition;
+            
+            newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).position;
+            newHandleAPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleAPosition;
+            newHandleBPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleBPosition;
+
+            spline.SetAnchorValues(newAnchor,
+                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newPosition,
+                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleAPosition,
+                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
+            
+            spline.AddAnchor(newAnchor);
+            spline.SetDirty();
+
+
 
            /* BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentIn,
