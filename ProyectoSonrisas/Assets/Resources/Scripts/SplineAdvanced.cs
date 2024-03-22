@@ -136,14 +136,13 @@ public class SplineAdvanced : MonoBehaviour {
             lastPosition = GetPositionAt(t);
 
             if (splineUnitDistance >= unitDistance) {
-                float remainingDistance = splineUnitDistance - unitDistance;
-                Debug.Log(remainingDistance + " " + unitDistance + " " + splineUnitDistance + " " + t);
-                Debug.Log(t - (remainingDistance / splineLength));
-                return GetPositionAt(t - (remainingDistance / splineLength));
                 /*
+                float remainingDistance = splineUnitDistance - unitDistance;
+                return GetPositionAt(t - (remainingDistance / splineLength));
+                */
+                
                 Vector3 direction = (GetPositionAt(t) - GetPositionAt(t - incrementAmount)).normalized;
                 return GetPositionAt(t) + direction * (unitDistance - splineUnitDistance);
-                */
             }
         }
 

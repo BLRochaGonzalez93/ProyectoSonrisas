@@ -15,7 +15,9 @@ MonoBehaviour:
   ID: 8
   railName: Slalom_Left
   type: 1
-  canBeSelected: 0
+  canBeSelected: 1
   countForCD: 1
-  cooldown: 2
-  prefab: {fileID: 0}
+  cooldown: 0
+  MeshPrefab: {fileID: 943121434361068877, guid: 26adf4bc2579469458edcb066dbeb0cc, type: 3}
+  splinePrefab: {fileID: 3691147801604538724, guid: 0acfb775f909dd1418bdb43e05e15b85, type: 3}
+  finalRotation: 0

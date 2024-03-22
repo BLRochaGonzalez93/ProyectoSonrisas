@@ -38,7 +38,7 @@ public class RailPositionerManager : MonoBehaviour
                 spline.Spline.RemoveAt(0);
             }*/
             //Destroy(previousMeshRail);
-            int rng = UnityEngine.Random.Range(0, 3);
+            int rng = UnityEngine.Random.Range(0, 9);
 
             //Definitivo
             //rail = manager.GetComponent<RailSelectorManagement>().RailSelector();
@@ -55,30 +55,30 @@ public class RailPositionerManager : MonoBehaviour
 
             //Anchor newAnchor = spline.GetAnchorAtIndex(spline.GetAnchorList().Count-1);
 
-
-            Anchor newAnchor = new Anchor();
-            Vector3 newPosition, newHandleAPosition, newHandleBPosition;
+            for (int i = 1; i < rail.splinePrefab.GetAnchorList().Count; i++)
+            {
+                Anchor newAnchor = new Anchor();
+                Vector3 newPosition, newHandleAPosition, newHandleBPosition;
             
-            newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).position;
-            newHandleAPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleAPosition;
-            newHandleBPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleBPosition;
+                newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).position;
+                newHandleAPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleAPosition;
+                newHandleBPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(1).handleBPosition;
 
-            spline.SetAnchorValues(newAnchor,
-                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newPosition,
-                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleAPosition,
-                        spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
+                spline.SetAnchorValues(newAnchor,
+                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newPosition,
+                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleAPosition,
+                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
             
-            spline.AddAnchor(newAnchor);
-            spline.SetDirty();
+                spline.AddAnchor(newAnchor);
+            }
 
 
-
-           /* BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
-                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentIn,
-                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentOut,
-                                        rail.splinePrefab.Splines[exitRotation].ToArray()[1].Rotation);
-            spline.Splines.ToArray()[0].Add(kn);
-           */
+            /* BezierKnot kn = new BezierKnot(rail.splinePrefab.Splines[exitRotation].ToArray()[1].Position + spline.Spline.ToArray()[spline.Spline.Count - 1].Position,
+                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentIn,
+                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].TangentOut,
+                                         rail.splinePrefab.Splines[exitRotation].ToArray()[1].Rotation);
+             spline.Splines.ToArray()[0].Add(kn);
+            */
 
             int fRot = exitRotation + rail.finalRotation;
             if (fRot > 7)
@@ -98,6 +98,7 @@ public class RailPositionerManager : MonoBehaviour
             currentRail = rail;
 
             spawnTimer = 0;
+            spline.SetDirty();
         }
     }
 }
