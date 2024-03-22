@@ -53,6 +53,6 @@ MonoBehaviour:
     handleBPosition: {x: -45.863014, y: 0, z: 0.11638882}
   - position: {x: -70, y: 0, z: -70}
     handleAPosition: {x: -70.852936, y: 0, z: -18.626028}
-    handleBPosition: {x: -70, y: 0, z: -80}
+    handleBPosition: {x: -70, y: 0, z: -115}
   pointList: []
   splineLength: 114.91315

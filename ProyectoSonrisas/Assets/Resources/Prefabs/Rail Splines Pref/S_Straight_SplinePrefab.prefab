@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 6281958451308579922}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -26.1}
+  m_LocalPosition: {x: 5.1, y: 0, z: -32.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49,10 +49,10 @@ MonoBehaviour:
   closedLoop: 0
   anchorList:
   - position: {x: 0, y: 0, z: 0}
-    handleAPosition: {x: 45.88, y: 0, z: 0}
-    handleBPosition: {x: -35, y: 0, z: 0}
+    handleAPosition: {x: 0, y: 0, z: 0}
+    handleBPosition: {x: 70, y: 0, z: 0}
   - position: {x: -70, y: 0, z: 0}
     handleAPosition: {x: -35, y: 0, z: 0}
-    handleBPosition: {x: -105, y: 0, z: 0}
+    handleBPosition: {x: -115, y: 0, z: 0}
   pointList: []
-  splineLength: 78.54151
+  splineLength: 70
