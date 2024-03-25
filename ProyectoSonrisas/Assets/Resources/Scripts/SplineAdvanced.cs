@@ -296,6 +296,14 @@ public class SplineAdvanced : MonoBehaviour {
         SetDirty();
     }
 
+    public void RemoveFirstAnchor()
+    {
+        if (anchorList == null) anchorList = new List<Anchor>();
+
+        anchorList.RemoveAt(0);
+        SetDirty();
+    }
+
 
     public List<Point> GetPointList() {
         return pointList;

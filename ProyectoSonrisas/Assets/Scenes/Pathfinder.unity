@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 19276073}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.70710665, z: -0, w: 0.7071069}
-  m_LocalPosition: {x: -1.7, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -174,12 +174,13 @@ MonoBehaviour:
   manager: {fileID: 1770346997}
   currentRail: {fileID: 11400000, guid: 702470566b104284da59144f17a6bab9, type: 2}
   rail: {fileID: 11400000, guid: 702470566b104284da59144f17a6bab9, type: 2}
-  previousRail: {fileID: 11400000, guid: 702470566b104284da59144f17a6bab9, type: 2}
+  previousRail: {fileID: 0}
   currentMeshRail: {fileID: 1768917131}
   meshRail: {fileID: 0}
   previousMeshRail: {fileID: 1768917131}
+  previous2MRail: {fileID: 0}
   exitRotation: 0
-  speed: 5
+  speed: 1
   timeValue: 0
 --- !u!114 &19276077
 MonoBehaviour:
@@ -194,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spline: {fileID: 2042771677}
-  speed: 5
+  speed: 35
   movementType: 1
 --- !u!1001 &298297886
 PrefabInstance:
@@ -654,23 +655,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: splineLength
-      value: 203.79533
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
+      propertyPath: anchorList.Array.data[0].handleAPosition.x
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: anchorList.Array.data[0].handleBPosition.x
-      value: 0
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: anchorList.Array.data[0].handleBPosition.z
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
+      propertyPath: anchorList.Array.data[1].handleAPosition.x
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855680113022266125, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: anchorList.Array.data[1].handleBPosition.x
-      value: -290
+      value: -220
       objectReference: {fileID: 0}
     - target: {fileID: 3743419907695366624, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3743419907695366624, guid: 82ad1e831e7e1284987348d4a3d79ef7, type: 3}
       propertyPath: m_LocalPosition.y

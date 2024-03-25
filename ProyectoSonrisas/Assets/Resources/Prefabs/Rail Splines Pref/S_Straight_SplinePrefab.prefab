@@ -50,9 +50,9 @@ MonoBehaviour:
   anchorList:
   - position: {x: 0, y: 0, z: 0}
     handleAPosition: {x: 0, y: 0, z: 0}
-    handleBPosition: {x: 70, y: 0, z: 0}
+    handleBPosition: {x: -20, y: 0, z: 0}
   - position: {x: -200, y: 0, z: 0}
-    handleAPosition: {x: -35, y: 0, z: 0}
-    handleBPosition: {x: -245, y: 0, z: 0}
+    handleAPosition: {x: -180, y: 0, z: 0}
+    handleBPosition: {x: -200, y: 0, z: 0}
   pointList: []
-  splineLength: 244.02908
+  splineLength: 200

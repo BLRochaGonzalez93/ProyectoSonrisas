@@ -49,10 +49,10 @@ MonoBehaviour:
   closedLoop: 0
   anchorList:
   - position: {x: 0, y: 0, z: 0}
-    handleAPosition: {x: 10, y: 0, z: 0}
+    handleAPosition: {x: 0, y: 0, z: 0}
     handleBPosition: {x: -77, y: 0, z: 0}
   - position: {x: -132, y: 0, z: 100}
     handleAPosition: {x: -134.93326, y: 0, z: 0}
-    handleBPosition: {x: -132, y: 0, z: 115}
+    handleBPosition: {x: -132, y: 0, z: 100}
   pointList: []
-  splineLength: 197.89719
+  splineLength: 197.84653
