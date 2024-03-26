@@ -15,7 +15,9 @@ MonoBehaviour:
   ID: 15
   railName: Climb_1Floor
   type: 2
-  canBeSelected: 0
+  canBeSelected: 1
   countForCD: 1
-  cooldown: 1
-  prefab: {fileID: 0}
+  cooldown: 0
+  MeshPrefab: {fileID: 3547162988886013386, guid: f08dc298564867f4991f87da23fd2927, type: 3}
+  splinePrefab: {fileID: 0}
+  finalRotation: 0

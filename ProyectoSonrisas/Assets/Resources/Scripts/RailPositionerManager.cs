@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.UIElements;
 using static SplineAdvanced;
 
 public class RailPositionerManager : MonoBehaviour
@@ -32,6 +33,7 @@ public class RailPositionerManager : MonoBehaviour
         {
 
             //Pruebas
+            speed += 2f;
             Destroy(previous2MRail);
             int rng = UnityEngine.Random.Range(0, 5);
 
@@ -52,6 +54,7 @@ public class RailPositionerManager : MonoBehaviour
 
             for (int i = 1; i < rail.splinePrefab.GetAnchorList().Count; i++)
             {
+                
                 Anchor newAnchor = new Anchor();
                 Vector3 newPosition, newHandleAPosition, newHandleBPosition;
 
@@ -65,6 +68,14 @@ public class RailPositionerManager : MonoBehaviour
                             spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
             
                 spline.AddAnchor(newAnchor);
+                
+                if (i == 1)
+                {
+                    spline.SetAnchorValues(spline.GetAnchorAtIndex(spline.GetAnchorList().Count - 2),
+                                            spline.GetAnchorList().ToArray()[spline.GetAnchorList().Count - 2].position,
+                                            spline.GetAnchorList().ToArray()[spline.GetAnchorList().Count - 2].handleAPosition,
+                                            spline.GetAnchorList().ToArray()[spline.GetAnchorList().Count - 2].handleBPosition + (Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetAnchorAtIndex(0).handleBPosition));
+                }
             }
 
 
