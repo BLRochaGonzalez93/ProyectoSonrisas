@@ -1,4 +1,5 @@
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.UIElements;
@@ -35,7 +36,7 @@ public class RailPositionerManager : MonoBehaviour
             //Pruebas
             speed += 2f;
             Destroy(previous2MRail);
-            int rng = UnityEngine.Random.Range(0, 5);
+            int rng = UnityEngine.Random.Range(0, 23);
 
             //Definitivo
             //rail = manager.GetComponent<RailSelectorManagement>().RailSelector();
@@ -55,17 +56,27 @@ public class RailPositionerManager : MonoBehaviour
             for (int i = 1; i < rail.splinePrefab.GetAnchorList().Count; i++)
             {
                 
-                Anchor newAnchor = new Anchor();
+                Anchor newAnchor = new();
                 Vector3 newPosition, newHandleAPosition, newHandleBPosition;
 
                 newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).position;
                 newHandleAPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).handleAPosition;
                 newHandleBPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).handleBPosition;
 
-                spline.SetAnchorValues(newAnchor,
-                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newPosition,
-                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleAPosition,
-                            spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
+                if (i == 1)
+                {
+                    spline.SetAnchorValues(newAnchor,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newPosition,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleAPosition,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - 1).position + newHandleBPosition);
+                }
+                else
+                {
+                    spline.SetAnchorValues(newAnchor,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - i).position + newPosition,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - i).position + newHandleAPosition,
+                                spline.GetComponent<SplineAdvanced>().GetAnchorAtIndex(spline.GetComponent<SplineAdvanced>().GetAnchorList().Count - i).position + newHandleBPosition);
+                }
             
                 spline.AddAnchor(newAnchor);
                 

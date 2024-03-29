@@ -18,6 +18,6 @@ MonoBehaviour:
   canBeSelected: 1
   countForCD: 1
   cooldown: 0
-  MeshPrefab: {fileID: 3000118320876245514, guid: 309265aaa6310384aa11496bfbeb0a3b, type: 3}
-  splinePrefab: {fileID: 0}
+  MeshPrefab: {fileID: 6825875505537455735, guid: f25222d447a09d44b8b2856573337958, type: 3}
+  splinePrefab: {fileID: 6488171400504431371, guid: 5b5049a7393c4864c98c293ef272ea15, type: 3}
   finalRotation: 0
