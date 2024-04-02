@@ -4,6 +4,8 @@ using Unity.XR.CoreUtils;
 using UnityEngine;
 using UnityEngine.XR;
 using Unity.XR.CoreUtils;
+using TMPro;
+using System;
 
 
 
@@ -19,10 +21,13 @@ public class RotatingRoom : MonoBehaviour
 
     public SelectorTransformPair[] selectorTransformPairs; 
     public float rotationSpeed = 5f; 
-    public float selectionTime = 3f; 
+    public float selectionTime = 3f;
+
+    public float movementSpeed = 3f; // Velocidad de movimiento
 
     private Dictionary<GameObject, Transform> selectorTransformMap;
     private bool isRotating = false;
+    private bool isMoving = false; // Bandera de movimiento
     private Transform currentRotationTarget;
     private float rotationTimer = 0f;
 
@@ -76,43 +81,170 @@ public class RotatingRoom : MonoBehaviour
         }
     }
 
+    //void RotateToTarget(Transform target)
+    //{
+    //    // Inicia la rotación hacia el objetivo
+    //    isRotating = true;
+    //    StartCoroutine(RotateSmoothly(target));
+    //}
+
+    //IEnumerator RotateSmoothly(Transform target)
+    //{
+    //    //Quaternion startRotation = transform.rotation;
+    //    Quaternion startRotation = origin.rotation;
+    //    Quaternion endRotation = Quaternion.LookRotation(target.forward, Vector3.up);
+
+    //    float elapsedTime = 0f;
+
+    //    while (elapsedTime < 1f)
+    //    {
+    //        elapsedTime += Time.deltaTime * rotationSpeed;
+    //        origin.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime);
+    //        Vector3 cameraForward = head.forward;
+    //        cameraForward.y = 0f;
+    //         Vector3 targetForward= target.forward;
+    //        targetForward.y= 0f;
+            
+    //        float angle= Vector3.SignedAngle(cameraForward,targetForward,Vector3.up);
+    //        //head.transform.rotation= Quaternion.Slerp(startRotation, endRotation, elapsedTime);
+    //        //origin.RotateAround(cameraForward, targetForward, angle);
+    //        //head.localRotation = Quaternion.identity;
+    //        isRotating = false;
+    //        yield return null;
+    //    }
+
+        
+    //   // transform.rotation = endRotation;
+    //   //origin.rotation=endRotation;
+    //    isRotating = false;
+    //}
+
+    //functions to move and rotate
+
     void RotateToTarget(Transform target)
     {
-        // Inicia la rotación hacia el objetivo
         isRotating = true;
-        StartCoroutine(RotateSmoothly(target));
+        StartCoroutine(RotateAndMove(target));
     }
+    //esta es la buena
 
-    IEnumerator RotateSmoothly(Transform target)
+    IEnumerator RotateAndMove(Transform target)
     {
-        //Quaternion startRotation = transform.rotation;
         Quaternion startRotation = origin.rotation;
-        Quaternion endRotation = Quaternion.LookRotation(target.forward, Vector3.up);
+        Quaternion endRotation = Quaternion.LookRotation(target.position, Vector3.up);
 
         float elapsedTime = 0f;
 
         while (elapsedTime < 1f)
         {
-            elapsedTime += Time.deltaTime * rotationSpeed;
+            elapsedTime += Time.deltaTime * 1.5f;
             origin.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime);
-            Vector3 cameraForward = head.forward;
-            cameraForward.y = 0f;
-             Vector3 targetForward= target.forward;
-            targetForward.y= 0f;
-            
-            float angle= Vector3.SignedAngle(cameraForward,targetForward,Vector3.up);
-            //head.transform.rotation= Quaternion.Slerp(startRotation, endRotation, elapsedTime);
-            //origin.RotateAround(cameraForward, targetForward, angle);
-            //head.localRotation = Quaternion.identity;
-            isRotating = false;
+
+            if (!isMoving && elapsedTime >= 0.5f) // Comienza a moverse después de la mitad de la rotación
+            {
+                isMoving = true;
+                //StartCoroutine(MoveTowardsTarget(target.position));
+                StartCoroutine(MoveTowardsTarget(target.position, () =>
+                {
+                    // Recenter(target);
+                    StartCoroutine(AdjustOrientation(target, rotationSpeed));
+                }));
+
+
+            }
+
             yield return null;
         }
 
-        
-       // transform.rotation = endRotation;
-       //origin.rotation=endRotation;
+
         isRotating = false;
     }
-    
+
+
+
+
+
+
+    IEnumerator MoveTowardsTarget(Vector3 targetPosition, Action onMovementComplete)
+    {
+        Vector3 startPosition = origin.position;
+        float journeyLength = Vector3.Distance(startPosition, targetPosition);
+        float startTime = Time.time;
+
+
+
+        while (true)
+        {
+            float distanceCovered = (Time.time - startTime) * movementSpeed;
+            float journeyFraction = distanceCovered / journeyLength;
+            origin.position = Vector3.Lerp(startPosition, targetPosition, journeyFraction);
+
+            if (journeyFraction >= 1f)
+            {
+                isMoving = false;
+
+                if (onMovementComplete != null)
+                {
+                   onMovementComplete(); // Llama a la función de ajuste de posición y orientación
+                }
+
+
+
+                break;
+            }
+
+            yield return null;
+        }
+    }
+
+    //private void Recenter(Transform target)
+    //{
+    //    XROrigin xrOrigin = GetComponent<XROrigin>();
+    //    //xrOrigin.MoveCameraToWorldLocation(target.position);
+
+    //    xrOrigin.MatchOriginUpCameraForward(target.up, target.forward);
+       
+    //}
+
+    private IEnumerator AdjustOrientation(Transform target, float duration)
+    {
+        XROrigin xrOrigin = GetComponent<XROrigin>();
+
+        // Guardar el vector forward del objetivo
+        Vector3 targetForward = target.forward;
+
+        // Obtener la rotación actual del origen
+        Quaternion startRotation = xrOrigin.transform.rotation;
+
+        // Calcular la rotación objetivo basada en el vector forward del objetivo
+        Quaternion targetRotation = Quaternion.LookRotation(targetForward, target.up);
+
+        float elapsedTime = 0f;
+
+        // Realizar la interpolación durante la duración especificada
+        while (elapsedTime < duration)
+        {
+            // Calcular la fracción del tiempo transcurrido
+            float t = elapsedTime / duration;
+
+            // Interpolar entre las rotaciones actual y objetivo
+            Quaternion newRotation = Quaternion.Lerp(startRotation, targetRotation, t);
+
+            // Aplicar la nueva rotación al origen
+            xrOrigin.transform.rotation = newRotation;
+
+            // Incrementar el tiempo transcurrido
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        // Asegurarse de que la rotación sea exactamente la rotación objetivo al final
+        xrOrigin.transform.rotation = targetRotation;
+    }
+
+
 
 }
+
+
