@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 
 
@@ -22,7 +23,14 @@ public class Collect : MonoBehaviour
 
     private Dictionary<GameObject, Transform> selectorTransformMap;
 
-    public int keys_collected;
+    public int num_keys;
+
+    private int keys_collected;
+
+    [SerializeField] KeyHUD keyHUD;
+
+    public GameObject door;
+
 
    
     void Start()
@@ -49,12 +57,19 @@ public class Collect : MonoBehaviour
                 Debug.Log("Objeto detectado: " + hitObject.name);
                 if (selectionTime <= 0){
                     hitObject.SetActive(false);
-                    keys_collected += 1;
-                    print(keys_collected);
+                    if (hitObject.CompareTag("Key")){
+                        keys_collected += 1;
+                        print(keys_collected);
+                        keyHUD.Keys += 1;
+                    }
                     selectionTime = 3f;
                 }
                 
 
+            }
+            if (keys_collected >= num_keys){
+                door.SetActive(false);
+                print("The door is open");
             }
         }
     }
