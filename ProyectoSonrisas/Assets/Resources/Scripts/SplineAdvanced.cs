@@ -236,9 +236,10 @@ public class SplineAdvanced : MonoBehaviour {
         Vector3 lastPosition = GetPositionAt(0f);
 
         for (float t = 0; t < 1f; t += stepSize) {
-            splineLength += Vector3.Distance(lastPosition, GetPositionAt(t));
+            Vector3 positionAtT = GetPositionAt(t);
+            splineLength += Vector3.Distance(lastPosition, positionAtT);
 
-            lastPosition = GetPositionAt(t);
+            lastPosition = positionAtT;
         }
 
         splineLength += Vector3.Distance(lastPosition, GetPositionAt(1f));

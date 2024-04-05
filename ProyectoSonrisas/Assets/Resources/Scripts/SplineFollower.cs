@@ -10,13 +10,14 @@ public class SplineFollower : MonoBehaviour {
     }
 
     [SerializeField] private SplineAdvanced spline;
-    public float speed = 1f;
+    public float speed;
     [SerializeField] private MovementType movementType;
 
-    private float moveAmount;
-    private float maxMoveAmount;
+    public float moveAmount;
+    public float maxMoveAmount;
 
     private void Start() {
+        speed = GetComponentInChildren<RailPositionerManager>().speed;
         switch (movementType) {
             default:
             case MovementType.Normalized:
@@ -29,6 +30,7 @@ public class SplineFollower : MonoBehaviour {
     }
 
     private void Update() {
+        speed = GetComponentInChildren<RailPositionerManager>().speed;
         moveAmount = (moveAmount + (Time.deltaTime * speed)) % maxMoveAmount;
 
         switch (movementType) {

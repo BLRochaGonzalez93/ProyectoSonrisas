@@ -15,6 +15,7 @@ public class RailPositionerManager : MonoBehaviour
     public int exitRotation = 0;
     public float speed;
     public float timeValue;
+    public float pathSpawnerFactor;
 
 
     void Start()
@@ -22,19 +23,20 @@ public class RailPositionerManager : MonoBehaviour
         spline.transform.position = Vector3.zero;
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        pathSpawnerFactor = 200 / speed;
         //speed = transform.GetComponent<SplineFollower>().speed;
 
         //timeValue = transform.GetComponent<SplineAnimate>().NormalizedTime;
         //transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
 
         spawnTimer += Time.deltaTime;
-        if (spawnTimer > 5f)
+        if (spawnTimer > pathSpawnerFactor)
         {
 
             //Pruebas
-            speed += 2f;
+            //speed += 1f;
             Destroy(previous2MRail);
             int rng = UnityEngine.Random.Range(0, 23);
 
@@ -51,7 +53,6 @@ public class RailPositionerManager : MonoBehaviour
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.z,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.w));
 
-            //Anchor newAnchor = spline.GetAnchorAtIndex(spline.GetAnchorList().Count-1);
 
             for (int i = 1; i < rail.splinePrefab.GetAnchorList().Count; i++)
             {
