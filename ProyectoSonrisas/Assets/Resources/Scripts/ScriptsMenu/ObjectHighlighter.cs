@@ -21,7 +21,7 @@ public class ObjectHighlighter : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxDistance))
         {
             GameObject hitObject = hit.collider.gameObject;
-            if (hitObject.CompareTag("Selectable"))
+            if (hitObject.CompareTag("Selectable")|| hitObject.CompareTag("Key"))
             {
                 if (hitObject != currentHighlightedObject)
                 {

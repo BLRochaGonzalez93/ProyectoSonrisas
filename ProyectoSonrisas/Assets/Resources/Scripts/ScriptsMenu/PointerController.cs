@@ -18,10 +18,11 @@ public class PointerController : MonoBehaviour
         
         Vector3 pointerPosition = cameraTransform.position + cameraTransform.forward * pointerDistance;
 
-        // Asignar la posición calculada al puntero
+
+        // Asignar la posicion calculada al puntero
         transform.position = pointerPosition;
 
-        // Opcional: Ajustar la rotación del puntero para que mire hacia adelante
+        // Opcional: Ajustar la rotacion del puntero para que mire hacia adelante
         transform.rotation = Quaternion.LookRotation(cameraTransform.forward);
     }
 }
