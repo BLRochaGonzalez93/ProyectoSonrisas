@@ -19,8 +19,9 @@ public class RotatingRoom : MonoBehaviour
         public Transform targetTransform;
     }
 
-    public SelectorTransformPair[] selectorTransformPairs; 
-    public float rotationSpeed = 5f; 
+    public SelectorTransformPair[] selectorTransformPairs;
+    public float rotationSpeed = 5f;
+    public float rotationDuration = 5f;
     public float selectionTime = 3f;
 
     public float movementSpeed = 3f; // Velocidad de movimiento
@@ -33,10 +34,10 @@ public class RotatingRoom : MonoBehaviour
 
     public Transform origin;
     public Transform head;
-   
+
     void Start()
     {
-       
+
         selectorTransformMap = new Dictionary<GameObject, Transform>();
         foreach (var pair in selectorTransformPairs)
         {
@@ -56,7 +57,7 @@ public class RotatingRoom : MonoBehaviour
             {
                 GameObject hitObject = hit.collider.gameObject;
 
-                
+
                 if (selectorTransformMap.ContainsKey(hitObject))
                 {
                     Debug.Log("Objeto detectado: " + hitObject.name);
@@ -104,7 +105,7 @@ public class RotatingRoom : MonoBehaviour
     //        cameraForward.y = 0f;
     //         Vector3 targetForward= target.forward;
     //        targetForward.y= 0f;
-            
+
     //        float angle= Vector3.SignedAngle(cameraForward,targetForward,Vector3.up);
     //        //head.transform.rotation= Quaternion.Slerp(startRotation, endRotation, elapsedTime);
     //        //origin.RotateAround(cameraForward, targetForward, angle);
@@ -113,7 +114,7 @@ public class RotatingRoom : MonoBehaviour
     //        yield return null;
     //    }
 
-        
+
     //   // transform.rotation = endRotation;
     //   //origin.rotation=endRotation;
     //    isRotating = false;
@@ -131,23 +132,23 @@ public class RotatingRoom : MonoBehaviour
     IEnumerator RotateAndMove(Transform target)
     {
         Quaternion startRotation = origin.rotation;
-        Quaternion endRotation = Quaternion.LookRotation(target.position, Vector3.up);
-
+        Vector3 directionToTarget = (target.position - origin.position).normalized;
+        Quaternion endRotation = Quaternion.LookRotation(directionToTarget, Vector3.up);
         float elapsedTime = 0f;
 
-        while (elapsedTime < 1f)
+        while (elapsedTime < 1.6f)
         {
-            elapsedTime += Time.deltaTime * 1.5f;
+            elapsedTime += Time.deltaTime * rotationSpeed;
             origin.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime);
 
-            if (!isMoving && elapsedTime >= 0.5f) // Comienza a moverse después de la mitad de la rotación
+            if (!isMoving && elapsedTime >= 0.7f) // Comienza a moverse después de la mitad de la rotación
             {
                 isMoving = true;
                 //StartCoroutine(MoveTowardsTarget(target.position));
                 StartCoroutine(MoveTowardsTarget(target.position, () =>
                 {
                     // Recenter(target);
-                    StartCoroutine(AdjustOrientation(target, rotationSpeed));
+                    StartCoroutine(AdjustOrientation(target, rotationDuration));
                 }));
 
 
@@ -185,7 +186,7 @@ public class RotatingRoom : MonoBehaviour
 
                 if (onMovementComplete != null)
                 {
-                   onMovementComplete(); // Llama a la función de ajuste de posición y orientación
+                    onMovementComplete(); // Llama a la función de ajuste de posición y orientación
                 }
 
 
@@ -203,21 +204,22 @@ public class RotatingRoom : MonoBehaviour
     //    //xrOrigin.MoveCameraToWorldLocation(target.position);
 
     //    xrOrigin.MatchOriginUpCameraForward(target.up, target.forward);
-       
+
     //}
 
     private IEnumerator AdjustOrientation(Transform target, float duration)
     {
-        XROrigin xrOrigin = GetComponent<XROrigin>();
 
+
+
+
+        // Obtener la rotación actual del origen
+        Quaternion startRotation = origin.rotation;
         // Guardar el vector forward del objetivo
         Vector3 targetForward = target.forward;
 
-        // Obtener la rotación actual del origen
-        Quaternion startRotation = xrOrigin.transform.rotation;
-
         // Calcular la rotación objetivo basada en el vector forward del objetivo
-        Quaternion targetRotation = Quaternion.LookRotation(targetForward, target.up);
+        Quaternion targetRotation = Quaternion.LookRotation(targetForward, Vector3.up);
 
         float elapsedTime = 0f;
 
@@ -231,7 +233,7 @@ public class RotatingRoom : MonoBehaviour
             Quaternion newRotation = Quaternion.Lerp(startRotation, targetRotation, t);
 
             // Aplicar la nueva rotación al origen
-            xrOrigin.transform.rotation = newRotation;
+            origin.rotation = newRotation;
 
             // Incrementar el tiempo transcurrido
             elapsedTime += Time.deltaTime;
@@ -240,7 +242,7 @@ public class RotatingRoom : MonoBehaviour
         }
 
         // Asegurarse de que la rotación sea exactamente la rotación objetivo al final
-        xrOrigin.transform.rotation = targetRotation;
+        origin.rotation = targetRotation;
     }
 
 
