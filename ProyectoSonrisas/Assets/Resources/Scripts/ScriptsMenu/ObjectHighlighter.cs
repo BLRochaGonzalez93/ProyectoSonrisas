@@ -8,7 +8,9 @@ public class ObjectHighlighter : MonoBehaviour
     public float maxDistance = 10f;
     private Camera cam;
     private GameObject currentHighlightedObject;
-
+    private bool isLookingAtObject = false;
+    private float lookTimer = 0f;
+    [SerializeField] private float requiredLookTime = 2f;
     void Start()
     {
         cam = GetComponent<Camera>();
@@ -64,11 +66,28 @@ public class ObjectHighlighter : MonoBehaviour
         {
             GameObject hitObject = hit.collider.gameObject;
             if (hitObject.CompareTag("Level1"))
-            {
-
-                SceneManager.LoadScene("BasicScene");
-
-            }
+                // Si la cámara mira el objeto y el temporizador no ha terminado, aumenta el temporizador
+                if (!isLookingAtObject)
+                {
+                    isLookingAtObject = true;
+                    lookTimer = 0f;
+                }
+                else
+                {
+                    lookTimer += Time.deltaTime;
+                    if (lookTimer >= requiredLookTime)
+                    {
+                        // Carga la escena de nivel
+                        SceneManager.LoadScene("BasicScene");
+                    }
+                }
+        }
+        else
+        {
+            // Si la cámara no está mirando el objeto, reinicia el temporizador
+            isLookingAtObject = false;
+            lookTimer = 0f;
         }
     }
+    
 }
