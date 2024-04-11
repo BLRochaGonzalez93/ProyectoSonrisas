@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectHighlighter : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class ObjectHighlighter : MonoBehaviour
 
     void Update()
     {
+        SelectLevelWithCam();
         RaycastHit hit;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); // Rayo desde el centro de la pantalla
 
@@ -49,6 +51,23 @@ public class ObjectHighlighter : MonoBehaviour
             {
                 currentHighlightedObject.GetComponent<SelectableObject>().ResetColor();
                 currentHighlightedObject = null;
+            }
+        }
+    }
+
+    private void SelectLevelWithCam()
+    {
+        RaycastHit hit;
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); 
+
+        if (Physics.Raycast(ray, out hit, maxDistance))
+        {
+            GameObject hitObject = hit.collider.gameObject;
+            if (hitObject.CompareTag("Level1"))
+            {
+
+                SceneManager.LoadScene("BasicScene");
+
             }
         }
     }
