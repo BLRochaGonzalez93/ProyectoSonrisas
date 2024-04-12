@@ -13,7 +13,7 @@ public class SceneTransitionManager : MonoBehaviour
     IEnumerator GoToSceneRoutine(int sceneIndex)
     {
         fadeScreenManager.FadeOut();
-        yield return new WaitForSeconds(fadeScreenManager.fadeDuration);
+        yield return new WaitForSeconds(fadeScreenManager.fadeOutDuration);
 
         SceneManager.LoadScene(sceneIndex);
     }
@@ -32,12 +32,20 @@ public class SceneTransitionManager : MonoBehaviour
         operation.allowSceneActivation = false;
 
         float timer = 0f;
-        while (timer <=fadeScreenManager.fadeDuration && !operation.isDone)
+        while (timer <=fadeScreenManager.fadeOutDuration && !operation.isDone)
         {
             timer += Time.deltaTime;
             yield return null;
         }
 
         operation.allowSceneActivation = true;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            GoToSceneAsync(3);
+        }
     }
 }

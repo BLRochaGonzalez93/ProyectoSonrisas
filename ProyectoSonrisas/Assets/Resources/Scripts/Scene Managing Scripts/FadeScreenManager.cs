@@ -4,7 +4,8 @@ using UnityEngine;
 public class FadeScreenManager : MonoBehaviour
 {
     public bool fadeOnStart = true;
-    public float fadeDuration = 2f;
+    public float fadeInDuration = 2f;
+    public float fadeOutDuration = .5f;
     public Color fadeColor;
     private MeshRenderer rend;
 
@@ -37,16 +38,33 @@ public class FadeScreenManager : MonoBehaviour
     public IEnumerator FadeRoutine(float alphaIn, float alphaOut)
     {
         float timer = 0;
-        while (timer <= fadeDuration)
+        if (alphaIn == 1)
         {
-            Color newColor = fadeColor;
-            newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeDuration);
+            while (timer <= fadeInDuration)
+            {
+                Color newColor = fadeColor;
+                newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeInDuration);
 
-            rend.material.SetColor("_BaseColor", newColor);
+                rend.material.SetColor("_BaseColor", newColor);
 
-            timer += Time.deltaTime;
-            yield return null;
+                timer += Time.deltaTime;
+                yield return null;
+            }
         }
+        else if(alphaIn == 0)
+        {
+            while (timer <= fadeOutDuration)
+            {
+                Color newColor = fadeColor;
+                newColor.a = Mathf.Lerp(alphaIn, alphaOut, timer / fadeOutDuration);
+
+                rend.material.SetColor("_BaseColor", newColor);
+
+                timer += Time.deltaTime;
+                yield return null;
+            }
+        }
+        
 
         Color newColor2 = fadeColor;
         newColor2.a = alphaOut;
