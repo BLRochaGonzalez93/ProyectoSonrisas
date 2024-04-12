@@ -7,24 +7,26 @@ public class SceneTransitionManager : MonoBehaviour
     public FadeScreenManager fadeScreenManager;
     public void GoToScene(int sceneIndex)
     {
-        StartCoroutine(GoToSceneRoutine(sceneIndex));
+        //StartCoroutine(GoToSceneRoutine(sceneIndex));
+        SceneManager.LoadScene(sceneIndex);
     }
-
+    /*
     IEnumerator GoToSceneRoutine(int sceneIndex)
     {
         fadeScreenManager.FadeOut();
         yield return new WaitForSeconds(fadeScreenManager.fadeOutDuration);
 
         SceneManager.LoadScene(sceneIndex);
-    }
+    }*/
 
 
     public void GoToSceneAsync(int sceneIndex)
     {
-        StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
+        //StartCoroutine(GoToSceneAsyncRoutine(sceneIndex));
+        SceneManager.LoadScene(sceneIndex);
     }
 
-
+    /*
     IEnumerator GoToSceneAsyncRoutine(int sceneIndex)
     {
         fadeScreenManager.FadeOut();
@@ -39,7 +41,7 @@ public class SceneTransitionManager : MonoBehaviour
         }
 
         operation.allowSceneActivation = true;
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {

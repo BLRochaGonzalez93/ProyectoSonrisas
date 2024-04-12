@@ -5,7 +5,7 @@ public class FadeScreenManager : MonoBehaviour
 {
     public bool fadeOnStart = true;
     public float fadeInDuration = 2f;
-    public float fadeOutDuration = .5f;
+    public float fadeOutDuration = 0f;
     public Color fadeColor;
     private MeshRenderer rend;
 
