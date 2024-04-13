@@ -78,7 +78,7 @@ public class ObjectHighlighter : MonoBehaviour
                     if (lookTimer >= requiredLookTime)
                     {
                         // Carga la escena de nivel
-                        SceneManager.LoadScene("BasicScene");
+                        SceneManager.LoadScene("Pathfinder");
                     }
                 }
         }
