@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Timeline;
 
 
@@ -21,6 +24,8 @@ public class Collect : MonoBehaviour
 
     public float selectionTime = 3f; 
 
+    private float speed = 15f;
+
     private Dictionary<GameObject, Transform> selectorTransformMap;
 
     public int num_keys;
@@ -29,7 +34,14 @@ public class Collect : MonoBehaviour
 
     [SerializeField] KeyHUD keyHUD;
 
+    [SerializeField] GameObject tomato;
+
+    [SerializeField] GameObject wagon;
+
+    private GameObject target;
+
     public GameObject door;
+
 
 
    
@@ -40,14 +52,14 @@ public class Collect : MonoBehaviour
         {
             selectorTransformMap.Add(pair.selector, pair.targetTransform);
         }
+        tomato.SetActive(false);
     }
 
-    async void Update()
+    void Update()
     {
     
         RaycastHit hit;
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
@@ -56,21 +68,39 @@ public class Collect : MonoBehaviour
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
                 if (selectionTime <= 0){
-                    hitObject.SetActive(false);
-                    if (hitObject.CompareTag("Key")){
+                    tomato.SetActive(true);
+                    tomato.transform.position = wagon.transform.position;   
+                    target = hitObject;
+                    selectionTime = 3f;
+
+                    
+                }
+            }
+            
+        }
+        if (tomato.activeSelf)
+        {
+            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed*Time.deltaTime);
+
+            if (Vector3.Distance(tomato.transform.position, target.transform.position) < 1)
+            {
+                tomato.SetActive(false);
+                target.SetActive(false);
+
+                if (target.CompareTag("Key"))
+                    {
                         keys_collected += 1;
                         print(keys_collected);
                         keyHUD.Keys += 1;
                     }
-                    selectionTime = 3f;
-                }
-                
 
+                if (keys_collected >= num_keys)
+                {
+                    door.SetActive(false);
+                    print("The door is open");
+                }
             }
-            if (keys_collected >= num_keys){
-                door.SetActive(false);
-                print("The door is open");
-            }
+
         }
     }
 }
