@@ -7,6 +7,6 @@ public class LevelSelector : MonoBehaviour
 {
    public void GoLevelOne()
     {
-        SceneManager.LoadScene("BasicScene");
+        SceneManager.LoadScene("Pathfinder");
     }
 }
