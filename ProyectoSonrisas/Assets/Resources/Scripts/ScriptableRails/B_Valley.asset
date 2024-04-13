@@ -17,5 +17,7 @@ MonoBehaviour:
   type: 2
   canBeSelected: 1
   countForCD: 1
-  cooldown: 3
-  prefab: {fileID: 0}
+  cooldown: 0
+  MeshPrefab: {fileID: 4041445270935469085, guid: 4db4e1544fbda6345a431c8683d0eef9, type: 3}
+  splinePrefab: {fileID: 3010869091793097200, guid: 9fdbbb51a03a48f4c941a395a28397c6, type: 3}
+  finalRotation: 0

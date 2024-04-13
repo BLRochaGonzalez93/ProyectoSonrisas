@@ -15,7 +15,7 @@ namespace Unity.VRTemplate
     public class XRPokeFollowAffordanceFill : MonoBehaviour
     {
         [SerializeField]
-        [Tooltip("Transform that will move in the poke direction when this or a parent GameObject is poked." +
+        [Tooltip("Transform that will move in the poke direction when this or a parentPlane GameObject is poked." +
                  "\nNote: Should be a direct child GameObject.")]
         Transform m_PokeFollowTransform;
 

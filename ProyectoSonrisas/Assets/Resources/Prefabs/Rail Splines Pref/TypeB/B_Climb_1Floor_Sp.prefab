@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4511934306627869984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3920395902608475868}
+  - component: {fileID: 3696656930819111024}
+  m_Layer: 0
+  m_Name: B_Climb_1Floor_Sp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3920395902608475868
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511934306627869984}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3696656930819111024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4511934306627869984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b28f5fcf19e7e408639f5daf8b292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dots: {fileID: 9129474473005552322, guid: 70917aa64ae1c044c8b0c6aeee79b6b4, type: 3}
+  normal: {x: 0, y: 1, z: 0}
+  closedLoop: 0
+  anchorList:
+  - position: {x: 0, y: 0, z: 0}
+    handleAPosition: {x: 0, y: 0, z: 0}
+    handleBPosition: {x: -63.099747, y: 0.98032975, z: 0}
+  - position: {x: -94.957855, y: 25.5, z: 0}
+    handleAPosition: {x: -83.08459, y: 7.8051796, z: 0}
+    handleBPosition: {x: -107.78943, y: 47.458363, z: 0}
+  - position: {x: -183.67009, y: 51.743877, z: 0}
+    handleAPosition: {x: -114.49362, y: 49.60217, z: 0}
+    handleBPosition: {x: -183.6701, y: 51.74388, z: 0}
+  pointList: []
+  splineLength: 199.89218

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1260784319039719275
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7843293869627217884}
+  - component: {fileID: 6923079382015852274}
+  m_Layer: 0
+  m_Name: B_Hollow_Simple_Sp
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7843293869627217884
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260784319039719275}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6923079382015852274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1260784319039719275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b28f5fcf19e7e408639f5daf8b292f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dots: {fileID: 9129474473005552322, guid: 70917aa64ae1c044c8b0c6aeee79b6b4, type: 3}
+  normal: {x: 0, y: 1, z: 0}
+  closedLoop: 0
+  anchorList:
+  - position: {x: 0, y: 0, z: 0}
+    handleAPosition: {x: 0, y: 0, z: 0}
+    handleBPosition: {x: -38.589523, y: 1.0176029, z: 0}
+  - position: {x: -79.69081, y: 0.85995305, z: 0}
+    handleAPosition: {x: -75.14001, y: 1.4730349, z: 0}
+    handleBPosition: {x: -86.7297, y: 0.29418617, z: 0}
+  - position: {x: -103.30992, y: -7.4539576, z: 0}
+    handleAPosition: {x: -91.67884, y: -7.35698, z: 0}
+    handleBPosition: {x: -114.06059, y: -7.3458185, z: 0}
+  - position: {x: -125.55693, y: 0.71565944, z: 0}
+    handleAPosition: {x: -122.16463, y: 0.34463418, z: 0}
+    handleBPosition: {x: -134.07118, y: 2.770966, z: 0}
+  - position: {x: -196.49466, y: -0.08299708, z: 0}
+    handleAPosition: {x: -161.90245, y: 1.1014118, z: 0}
+    handleBPosition: {x: -196.4947, y: -0.08299708, z: 0}
+  pointList: []
+  splineLength: 200.04568
