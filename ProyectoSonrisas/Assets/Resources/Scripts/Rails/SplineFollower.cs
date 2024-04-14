@@ -15,8 +15,10 @@ public class SplineFollower : MonoBehaviour {
 
     public float moveAmount;
     public float maxMoveAmount;
+    public int tramo=0;
 
     private void Start() {
+        spline = GetComponent<RailPositionerManager>().splines[tramo];
         speed = GetComponentInChildren<RailPositionerManager>().speed;
         switch (movementType) {
             default:
@@ -31,6 +33,11 @@ public class SplineFollower : MonoBehaviour {
 
     private void Update() {
         speed = GetComponentInChildren<RailPositionerManager>().speed;
+        if ((moveAmount + (Time.deltaTime * speed)) / maxMoveAmount >= 1)
+        {
+            tramo++;
+            spline = GetComponent<RailPositionerManager>().splines[tramo];
+        }
         moveAmount = (moveAmount + (Time.deltaTime * speed)) % maxMoveAmount;
 
         switch (movementType) {
