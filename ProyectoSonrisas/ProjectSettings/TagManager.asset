@@ -8,6 +8,7 @@ TagManager:
   - Anchor
   - Level1
   - Key
+  - Ground
   layers:
   - Default
   - TransparentFX
