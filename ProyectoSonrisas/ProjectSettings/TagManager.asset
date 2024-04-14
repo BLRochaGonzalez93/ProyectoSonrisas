@@ -9,6 +9,11 @@ TagManager:
   - Level1
   - Key
   - Ground
+<<<<<<< Updated upstream
+=======
+  - Door
+  - carro
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
