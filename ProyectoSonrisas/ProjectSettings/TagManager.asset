@@ -9,6 +9,7 @@ TagManager:
   - Level1
   - Key
   - Ground
+  - Door
   layers:
   - Default
   - TransparentFX

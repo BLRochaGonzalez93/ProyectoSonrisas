@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using Unity.XR.CoreUtils;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Timeline;
-
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 
@@ -21,7 +27,7 @@ public class Collect : MonoBehaviour
 
     public float selectionTime = 3f; 
 
-    private Dictionary<GameObject, Transform> selectorTransformMap;
+    private float speed = 15f;
 
     public int num_keys;
 
@@ -29,48 +35,75 @@ public class Collect : MonoBehaviour
 
     [SerializeField] KeyHUD keyHUD;
 
+    [SerializeField] GameObject tomato;
+
+    [SerializeField] GameObject weapon;
+
+    private GameObject target;
+
     public GameObject door;
 
 
+    public InputActionReference shoot;
+
+    public InputActionReference grab;
+    
+    public Camera cam;
    
+
+    
     void Start()
     {
-        selectorTransformMap = new Dictionary<GameObject, Transform>();
-        foreach (var pair in selectorTransformPairs)
-        {
-            selectorTransformMap.Add(pair.selector, pair.targetTransform);
-        }
+        tomato.SetActive(false);
     }
 
-    async void Update()
+    void Update()
     {
+        float shootValue = shoot.action.ReadValue<float>();
     
         RaycastHit hit;
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-
+        //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0f));
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
-            if (selectorTransformMap.ContainsKey(hitObject))
-            {
+
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
-                if (selectionTime <= 0){
-                    hitObject.SetActive(false);
-                    if (hitObject.CompareTag("Key")){
+                if (selectionTime <= 0 && hit.collider.gameObject.tag == "Key"){
+                    tomato.SetActive(true);
+                    tomato.transform.position = weapon.transform.position;   
+                    target = hitObject;
+                    selectionTime = 3f;
+
+                    
+
+            }
+            
+        }
+        if (tomato.activeSelf)
+        {
+            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed*Time.deltaTime);
+
+            if (Vector3.Distance(tomato.transform.position, target.transform.position) < 1)
+            {
+                tomato.SetActive(false);
+                target.SetActive(false);
+
+                if (target.CompareTag("Key"))
+                    {
                         keys_collected += 1;
                         print(keys_collected);
                         keyHUD.Keys += 1;
                     }
-                    selectionTime = 3f;
-                }
-                
 
+                if (keys_collected >= num_keys)
+                {
+                    door.SetActive(false);
+                    print("The door is open");
+                }
             }
-            if (keys_collected >= num_keys){
-                door.SetActive(false);
-                print("The door is open");
-            }
+
         }
     }
 }
