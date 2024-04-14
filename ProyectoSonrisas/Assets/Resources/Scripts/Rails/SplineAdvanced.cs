@@ -5,33 +5,22 @@ using UnityEngine;
 
 public class SplineAdvanced : MonoBehaviour
 {
-
-    private static readonly Vector3 normal2D = new Vector3(0, 0, -1f);
-
     public event EventHandler OnDirty;
 
     [SerializeField] private Transform dots = null;
-    [SerializeField] private Vector3 normal = new Vector3(0, 0, -1);
+    [SerializeField] private Vector3 normal = new(0, 0, -1);
     [SerializeField] private bool closedLoop;
     [SerializeField] private List<Anchor> anchorList;
     [SerializeField] private List<Point> pointList;
     [SerializeField] private float splineLength;
 
-    private float moveDistance;
     private float pointAmountInCurve;
     private float pointAmountPerUnitInCurve = 2f;
-
-
 
     private void Awake()
     {
         splineLength = GetSplineLength();
         SetupPointList();
-    }
-
-    private void Start()
-    {
-        //PrintPath();
     }
 
     private void Update()
@@ -59,7 +48,6 @@ public class SplineAdvanced : MonoBehaviour
     {
         if (t == 1)
         {
-            // Full position, special case
             Anchor anchorA, anchorB;
             if (closedLoop)
             {
@@ -89,7 +77,6 @@ public class SplineAdvanced : MonoBehaviour
             }
             else
             {
-                // anchorIndex is final one, either don't link to "next" one or loop back
                 if (closedLoop)
                 {
                     anchorA = anchorList[anchorList.Count - 1];
@@ -165,17 +152,11 @@ public class SplineAdvanced : MonoBehaviour
 
             if (splineUnitDistance >= unitDistance)
             {
-                /*
-                float remainingDistance = splineUnitDistance - unitDistance;
-                return GetPositionAt(t - (remainingDistance / splineLength));
-                */
-
                 Vector3 direction = (GetPositionAt(t) - GetPositionAt(t - incrementAmount)).normalized;
                 return GetPositionAt(t) + direction * (unitDistance - splineUnitDistance);
             }
         }
 
-        // Default
         Anchor anchorA = anchorList[0];
         Anchor anchorB = anchorList[1];
         return CubicLerp(anchorA.position, anchorA.handleBPosition, anchorB.handleAPosition, anchorB.position, unitDistance / splineLength);
@@ -188,7 +169,7 @@ public class SplineAdvanced : MonoBehaviour
         Vector3 lastPosition = GetPositionAt(0f);
 
         float incrementAmount = stepSize;
-        float lastDistance = 0f;
+        float lastDistance;
 
         for (float t = 0; t < 1f; t += incrementAmount)
         {
@@ -205,7 +186,6 @@ public class SplineAdvanced : MonoBehaviour
 
         }
 
-        // Default
         Anchor anchorA = anchorList[0];
         Anchor anchorB = anchorList[1];
         return CubicLerp(anchorA.position, anchorA.handleBPosition, anchorB.handleAPosition, anchorB.position, unitDistance / splineLength);
@@ -248,12 +228,10 @@ public class SplineAdvanced : MonoBehaviour
 
     private void UpdateForwardVectors()
     {
-        // Set forward vectors
         for (int i = 0; i < pointList.Count - 1; i++)
         {
             pointList[i].forward = (pointList[i + 1].position - pointList[i].position).normalized;
         }
-        // Set final forward vector
         if (closedLoop)
         {
             pointList[pointList.Count - 1].forward = pointList[0].forward;
@@ -263,15 +241,6 @@ public class SplineAdvanced : MonoBehaviour
             pointList[pointList.Count - 1].forward = pointList[pointList.Count - 2].forward;
         }
     }
-
-    /*private void PrintPath() {
-        foreach (Point point in pointList) {
-            Transform dotTransform = Instantiate(dots, point.position, Quaternion.identity);
-            FunctionUpdater.Create(() => {
-                dotTransform.position = point.position;
-            });
-        }
-    }*/
 
     public float GetSplineLength(float stepSize = .01f)
     {

@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using static SplineAdvanced;
 
 public class RailPositionerManager : MonoBehaviour
 {
     public float spawnTimer;
+    public List<SplineAdvanced> splines;
     public SplineAdvanced spline;
     public GameObject manager;
     public Rail currentRail, rail = null, previousRail = null;
@@ -20,11 +22,19 @@ public class RailPositionerManager : MonoBehaviour
 
     void Start()
     {
-        spline.transform.position = Vector3.zero;
+        for (int i = 0; i < splines.Count; i++)
+        {
+            splines[i].transform.position = Vector3.zero;
+        }
+        spline = splines[0];
     }
 
     void FixedUpdate()
     {
+        /*if (railCounter == 7 && railResets == 3)
+        {
+            GetComponent<SplineFollower>().NewCycle();
+        }*/
 
         pathSpawnerFactor = 200 / speed;
         //speed = transform.GetComponent<SplineFollower>().speed;
@@ -33,6 +43,11 @@ public class RailPositionerManager : MonoBehaviour
         //transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
 
         spawnTimer += Time.deltaTime;
+
+        if (railResets > 0)
+        {
+            spline = newSpline;
+        }
 
         if (railCounter < 7)
         {
@@ -123,23 +138,41 @@ public class RailPositionerManager : MonoBehaviour
             if (spawnTimer > pathSpawnerFactor)
             {
                 Destroy(previous2MRail);
-                meshRail = Instantiate(newSplinePrefab, 
+                newSpline = splines[splines.IndexOf(spline) + 1];
+
+                rail = manager.GetComponent<RailSelectorManagement>().railPrefabs[0];
+                meshRail = Instantiate(rail.MeshPrefab, 
                                 new Vector3(currentMeshRail.transform.GetChild(1).transform.position.x,
                                                 currentMeshRail.transform.GetChild(1).transform.position.y,
                                                 currentMeshRail.transform.GetChild(1).transform.position.z),
                                 new Quaternion(currentMeshRail.transform.GetChild(1).transform.rotation.x,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.y,
                                                 currentMeshRail.transform.GetChild(1).transform.rotation.z,
-                                                currentMeshRail.transform.GetChild(1).transform.rotation.w)).gameObject.transform.GetChild(1).gameObject;
+                                                currentMeshRail.transform.GetChild(1).transform.rotation.w));
 
-                //previousRail = currentRail;
+                for (int i = 0; i < rail.splinePrefab.GetAnchorList().Count; i++)
+                {
+
+                    Vector3 newPosition, newHandleAPosition, newHandleBPosition;
+
+                    newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).position;
+                    newHandleAPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).handleAPosition;
+                    newHandleBPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).handleBPosition;
+
+                    newSpline.SetAnchorValues(newSpline.GetAnchorAtIndex(i), newPosition, newHandleAPosition, newHandleBPosition);
+                }
+
+                newSpline.transform.position = meshRail.transform.position;
+
+                previousRail = currentRail;
                 previous2MRail = previousMeshRail;
                 previousMeshRail = currentMeshRail;
                 currentMeshRail = meshRail;
-                //currentRail = manager.GetComponent<RailSelectorManagement>().railPrefabs[0];
+                currentRail = rail;
                 railCounter = 0;
                 spawnTimer = 0;
-                spline = newSpline.GetComponent<SplineAdvanced>();
+                railResets++;
+                //spline = newSpline.GetComponent<SplineAdvanced>();
             }
         }
     }
