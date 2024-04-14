@@ -57,7 +57,7 @@ public class RailPositionerManager : MonoBehaviour
                 //Pruebas
                 //speed += 1f;
                 Destroy(previous2MRail);
-                int rng = UnityEngine.Random.Range(0, 23);
+                int rng = UnityEngine.Random.Range(0, 7);
 
                 //Definitivo
                 //rail = manager.GetComponent<RailSelectorManagement>().RailSelector();
