@@ -153,7 +153,6 @@ public class RailPositionerManager : MonoBehaviour
                 for (int i = 0; i < rail.splinePrefab.GetAnchorList().Count; i++)
                 {
 
-                    Anchor newAnchor = new();
                     Vector3 newPosition, newHandleAPosition, newHandleBPosition;
 
                     newPosition = Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetComponent<SplineAdvanced>().GetAnchorAtIndex(i).position;

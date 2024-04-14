@@ -211,13 +211,6 @@ MonoBehaviour:
   moveAmount: 0
   maxMoveAmount: 0
   tramo: 0
-  ciclos: 3
-  currentCycle: 0
-  splines:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!65 &19276078
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1834,6 +1827,6 @@ SceneRoots:
   - {fileID: 19276075}
   - {fileID: 1770346999}
   - {fileID: 86607108}
-  - {fileID: 2009377958}
   - {fileID: 1923791805}
   - {fileID: 974442222}
+  - {fileID: 2009377958}
