@@ -9,7 +9,7 @@ public class FollowPathOutside : MonoBehaviour
  
     public Transform[] targetPoints;
     public float rotationSpeed;
-    public float movementSpeed;
+    
     
 
     public Transform origin;
@@ -39,7 +39,7 @@ public class FollowPathOutside : MonoBehaviour
         
         float rotationTime = 0f;
 
-        while (rotationTime < 1.6f)
+        while (rotationTime < 1.4f)
         {
             rotationTime += Time.deltaTime / rotationSpeed;
             origin.rotation = Quaternion.Slerp(startRotation, endRotation, rotationTime);
