@@ -6,7 +6,10 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Timeline;
-
+using UnityEngine.XR.Interaction;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 
 
@@ -26,8 +29,6 @@ public class Collect : MonoBehaviour
 
     private float speed = 15f;
 
-    private Dictionary<GameObject, Transform> selectorTransformMap;
-
     public int num_keys;
 
     private int keys_collected;
@@ -36,45 +37,47 @@ public class Collect : MonoBehaviour
 
     [SerializeField] GameObject tomato;
 
-    [SerializeField] GameObject wagon;
+    [SerializeField] GameObject weapon;
 
     private GameObject target;
 
     public GameObject door;
 
 
+    public InputActionReference shoot;
 
+    public InputActionReference grab;
+    
+    public Camera cam;
    
+
+    
     void Start()
     {
-        selectorTransformMap = new Dictionary<GameObject, Transform>();
-        foreach (var pair in selectorTransformPairs)
-        {
-            selectorTransformMap.Add(pair.selector, pair.targetTransform);
-        }
         tomato.SetActive(false);
     }
 
     void Update()
     {
+        float shootValue = shoot.action.ReadValue<float>();
     
         RaycastHit hit;
-        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0f));
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
-            if (selectorTransformMap.ContainsKey(hitObject))
-            {
+
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
-                if (selectionTime <= 0){
+                if (selectionTime <= 0 && hit.collider.gameObject.tag == "Key"){
                     tomato.SetActive(true);
-                    tomato.transform.position = wagon.transform.position;   
+                    tomato.transform.position = weapon.transform.position;   
                     target = hitObject;
                     selectionTime = 3f;
 
                     
-                }
+
             }
             
         }

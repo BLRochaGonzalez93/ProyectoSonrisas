@@ -9,25 +9,23 @@ public class OpenDoor : MonoBehaviour
     public GameObject door;
     public GameObject aliade;
 
-    public GameObject wagon;
+    public GameObject aliade_ref;
 
     private bool entered = false;
 
     private bool opened;
 
-    Vector3 original_position;
-    
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider collider)
     {
-        entered = true;
-        opened = false;
+        if (collider.CompareTag("Door"))
+        {
+            entered = true;
+            opened = false;
+        }
+        
     }
 
-    void Start()
-    {
-        original_position = new Vector3(aliade.transform.position.x, aliade.transform.position.y, aliade.transform.position.z);
-    }
 
     void Update()
     {
@@ -42,11 +40,11 @@ public class OpenDoor : MonoBehaviour
                 door.SetActive(false);  
             }
         }
-
-        if (opened && Vector3.Distance(aliade.transform.position, wagon.transform.position) < 1)
+        Debug.Log("Opened: " + opened);
+        if (opened && Vector3.Distance(aliade.transform.position, aliade_ref.transform.position) >= 0.01)
         {
             Debug.Log("OPENED");
-            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, wagon.transform.position, 15f*Time.deltaTime);
+            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, aliade_ref.transform.position, 15f*Time.deltaTime);
         }
 
         
