@@ -31,6 +31,10 @@ public class RailPositionerManager : MonoBehaviour
 
     void FixedUpdate()
     {
+        /*if (railCounter == 7 && railResets == 3)
+        {
+            GetComponent<SplineFollower>().NewCycle();
+        }*/
 
         pathSpawnerFactor = 200 / speed;
         //speed = transform.GetComponent<SplineFollower>().speed;
@@ -43,7 +47,6 @@ public class RailPositionerManager : MonoBehaviour
         if (railResets > 0)
         {
             spline = newSpline;
-            railResets = 0;
         }
 
         if (railCounter < 7)
