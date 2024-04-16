@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pathfinder.unity
     guid: c8fba9fcb3f895e47a1f0d814a9e753d
   - enabled: 1
-    path: Assets/Scenes/PruebasPortal.unity
+    path: Assets/Scenes/LevelScene.unity
     guid: a2d74af80e97e804083af3a8b067b819
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
