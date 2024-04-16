@@ -47,7 +47,7 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GoToSceneAsync(3);
+            GoToSceneAsync(2);
         }
     }
 }
