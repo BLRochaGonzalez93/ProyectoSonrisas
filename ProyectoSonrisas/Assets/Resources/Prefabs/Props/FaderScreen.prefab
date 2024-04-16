@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3838160378992879303}
   - component: {fileID: 8966643505127445866}
   - component: {fileID: 2040921054079778033}
+  - component: {fileID: 7853013290451097337}
   m_Layer: 0
   m_Name: FaderScreen
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,5 +98,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeOnStart: 1
-  fadeDuration: 2
+  fadeInDuration: 2
+  fadeOutDuration: 0.5
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
+--- !u!65 &7853013290451097337
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6155039068844099881}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 1, z: 0.1883231}
+  m_Center: {x: -0.00000029186964, y: 0, z: 1.6322529}
