@@ -50,6 +50,9 @@ public class Collect : MonoBehaviour
     
     public Camera cam;
    
+    private int enemies_killed;
+    public int n_enemies;
+    public GameObject boss;
 
     
     void Start()
@@ -70,7 +73,7 @@ public class Collect : MonoBehaviour
 
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
-                if (selectionTime <= 0 && hit.collider.gameObject.tag == "Key"){
+                if (selectionTime <= 0 && (hit.collider.gameObject.tag == "Key" || hit.collider.gameObject.tag == "Enemy")){
                     tomato.SetActive(true);
                     tomato.transform.position = weapon.transform.position;   
                     target = hitObject;
@@ -91,11 +94,21 @@ public class Collect : MonoBehaviour
                 target.SetActive(false);
 
                 if (target.CompareTag("Key"))
-                    {
-                        keys_collected += 1;
-                        print(keys_collected);
-                        keyHUD.Keys += 1;
-                    }
+                {
+                    keys_collected += 1;
+                    print(keys_collected);
+                    keyHUD.Keys += 1;
+                }
+                
+                if (target.CompareTag("Enemy")){
+                    enemies_killed += 1;
+                }
+
+                if (enemies_killed == n_enemies)
+                {
+                    BoxCollider box = boss.GetComponent<BoxCollider>();
+                    box.enabled = true;
+                }
 
                 if (keys_collected >= num_keys)
                 {
