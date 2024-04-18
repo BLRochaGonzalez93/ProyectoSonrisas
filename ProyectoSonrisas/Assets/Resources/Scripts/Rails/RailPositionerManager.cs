@@ -18,6 +18,9 @@ public class RailPositionerManager : MonoBehaviour
     public int railResets = 0;
     public GameObject newSplinePrefab;
     public SplineAdvanced newSpline = null;
+    public GameObject doorPrefab;
+    public GameObject portalPrefab;
+    public bool portalDoorCreated = false;
 
 
     void Start()
@@ -43,6 +46,15 @@ public class RailPositionerManager : MonoBehaviour
         //transform.GetComponent<SplineAnimate>().MaxSpeed += 0.001f;
 
         spawnTimer += Time.deltaTime;
+
+        if (railCounter == 6 && railResets == 3 && !portalDoorCreated)
+        {
+            GameObject door =  Instantiate(doorPrefab, currentMeshRail.transform.GetChild(1));
+            GameObject portal = Instantiate(portalPrefab, currentMeshRail.transform.GetChild(1));
+            portal.GetComponent<SceneTransitionManager>().fadeScreenManager = manager.GetComponent<SceneTransitionManager>().fadeScreenManager;
+            portal.GetComponent<SceneTransitionManager>().nextScene = 3;
+            portalDoorCreated = true;
+        }
 
         if (railResets > 0)
         {

@@ -1,54 +1,46 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 
 public class OpenDoor : MonoBehaviour
 {
-    public GameObject door;
     public GameObject aliade;
-
     public GameObject aliade_ref;
 
-    private bool entered = false;
+    public bool entered = false;
 
-    private bool opened;
-
-
-    void OnTriggerEnter(Collider collider)
+    private void Start()
     {
-        if (collider.CompareTag("Door"))
-        {
-            entered = true;
-            opened = false;
-        }
-        
+        aliade = GameObject.FindWithTag("Respawn").gameObject.transform.Find("aliade").gameObject;
+        aliade_ref = GameObject.FindWithTag("Respawn").gameObject.transform.Find("aliade_ref").gameObject;
     }
-
 
     void Update()
     {
-        if (entered){
-            if (Vector3.Distance(aliade.transform.position, door.transform.position) > 5)
-            {
-                aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, door.transform.position, 10f*Time.deltaTime);
-            }
-            else
-            {
-                opened = true;
-                door.SetActive(false);  
-            }
-        }
-        Debug.Log("Opened: " + opened);
-        if (opened && Vector3.Distance(aliade.transform.position, aliade_ref.transform.position) >= 0.01)
+        if (entered)
         {
-            Debug.Log("OPENED");
-            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, aliade_ref.transform.position, 15f*Time.deltaTime);
+            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, transform.position, GameObject.FindWithTag("Respawn").GetComponent<RailPositionerManager>().speed * Time.deltaTime);
         }
-
-        
+        else
+        {
+            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, aliade_ref.transform.position, 15f * Time.deltaTime);
+        }
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            entered = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            entered = false;
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+        }
+    }
 }
 
