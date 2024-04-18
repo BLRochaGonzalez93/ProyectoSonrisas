@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 public class SceneTransitionManager : MonoBehaviour
 {
     public FadeScreenManager fadeScreenManager;
+    public int nextScene;
+
     public void GoToScene(int sceneIndex)
     {
         //StartCoroutine(GoToSceneRoutine(sceneIndex));
@@ -47,7 +49,7 @@ public class SceneTransitionManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GoToSceneAsync(2);
+            GoToSceneAsync(nextScene);
         }
     }
 }
