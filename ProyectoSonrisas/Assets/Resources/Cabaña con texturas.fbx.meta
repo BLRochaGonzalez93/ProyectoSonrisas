@@ -1,0 +1,254 @@
+fileFormatVersion: 2
+guid: e51e2745005fa8243ba27b45e51da913
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-Leather_23_Base Color
+    second: {fileID: 2800000, guid: 708a84c725b38504ebaf5f00b273e10b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-Leather_23_Roughness
+    second: {fileID: 2800000, guid: ac94042a1c22f75408976cadaa8069b4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-carpet_floor_7_basecolor
+    second: {fileID: 2800000, guid: 732150bd63ed40b41b7417fb578283ca, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-carpet_floor_7_metallic
+    second: {fileID: 2800000, guid: 277ecf38bde09e0449ae5ec105db5bb0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: 2K-carpet_floor_7_roughness
+    second: {fileID: 2800000, guid: d2234d354a8803942bd38ca9af1b3423, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leather028_2K_Color
+    second: {fileID: 2800000, guid: a6df128a34f8b1a4ba65e75333bec06d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leather028_2K_Roughness
+    second: {fileID: 2800000, guid: 9df44d484d7348d498c42a9562104607, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leather032_2K_Color
+    second: {fileID: 2800000, guid: adf74d96c192bea4b8679d7e899bba1a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Leather032_2K_Roughness
+    second: {fileID: 2800000, guid: 24d127b59788cbd4599014fb6d1cf8d3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: _Diffuse_
+    second: {fileID: 2800000, guid: 72f8bea8e7578b5499c48fdc0d1977a3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: _Normal_
+    second: {fileID: 2800000, guid: d0318aa12b502bd43ab55ff29f73cb24, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: _Roughness_
+    second: {fileID: 2800000, guid: 27fddb602fa600c4d92d961bdc0a0bed, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: book_pattern_col1_8k
+    second: {fileID: 2800000, guid: da0b5562f25d4c847ac23d3d147ff21f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: book_pattern_nor_gl_8k
+    second: {fileID: 2800000, guid: d7640627c59362243bfaf69c26ee446d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: book_pattern_rough_8k
+    second: {fileID: 2800000, guid: f160e8dd082c2e84cbe2580be30eec7b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_albedo
+    second: {fileID: 2800000, guid: 1ce00852c3442364fb5b2aadd3405d02, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_normal
+    second: {fileID: 2800000, guid: 39fbd39932740b44b94632204e66f77b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_roughness
+    second: {fileID: 2800000, guid: 04408622ad4732747adbac311cfd4df6, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_white_diff_8k
+    second: {fileID: 2800000, guid: 51847ace74e395a49ad9277626cb9d6b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_white_nor_gl_8k
+    second: {fileID: 2800000, guid: 2a13c86b105cdfd4d94aa20bab0005fb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: leather_white_rough_8k
+    second: {fileID: 2800000, guid: 792f9e668a570aa4eaaf226a695e483e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_BaseColor
+    second: {fileID: 2800000, guid: 9e407b2855282ad499406dd56b089a51, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: d6e6a8ed40e6ce14b9632660e7b13655, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: plane_divided_DefaultMaterial_Roughness
+    second: {fileID: 2800000, guid: a5a3e7b8e111db0448019a08cd0a6579, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: tiled_plane_DefaultMaterial_Normal
+    second: {fileID: 2800000, guid: cedbcd39667e3304b853a763fa20e350, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood-45_diffuse
+    second: {fileID: 2800000, guid: 7d5520ad437b50249b35ad172dfad23e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood-45_smooth
+    second: {fileID: 2800000, guid: e465143868861e0439c38db269e6b11a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood-90_diffuse
+    second: {fileID: 2800000, guid: e000e681be697774b96c12772809d9ad, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood-90_smooth
+    second: {fileID: 2800000, guid: 55c2db59535bf7540a7f6c0b9918e073, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
