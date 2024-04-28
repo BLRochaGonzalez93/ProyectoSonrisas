@@ -18,7 +18,7 @@ public class ObjectHighlighter : MonoBehaviour
 
     void Update()
     {
-        SelectLevelWithCam();
+        //SelectLevelWithCam();
         RaycastHit hit;
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f)); // Rayo desde el centro de la pantalla
 
