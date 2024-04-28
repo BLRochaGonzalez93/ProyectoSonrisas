@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000017909151, y: 0.70710677, z: -0.7071068, w: 0.000002244837}
   m_LocalPosition: {x: -0, y: 0.0106, z: 0.01002}
-  m_LocalScale: {x: 0.018, y: 0.0115, z: 1}
+  m_LocalScale: {x: 0.016471079, y: 0.0115, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1178214619210372204}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8bcc2c47cea2144b9c16710e400fade, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f19f99248c4d83499791052e57d2249, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2495663847227730056}
   - component: {fileID: 8639768212092986906}
   m_Layer: 0
-  m_Name: Libro 1
+  m_Name: Libro 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53e72cd27df22b8429681b3488480637, type: 2}
+  - {fileID: -3034804552892739251, guid: 8cb93d41ae0e03642aa64c7b9d0579bb, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
