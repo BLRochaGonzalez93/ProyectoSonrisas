@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.0000017909151, y: 0.70710677, z: -0.7071068, w: 0.000002244837}
   m_LocalPosition: {x: -0, y: 0.0106, z: 0.01002}
-  m_LocalScale: {x: 0.018, y: 0.0115, z: 1}
+  m_LocalScale: {x: 0.016471079, y: 0.0115, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1178214619210372204}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e8bcc2c47cea2144b9c16710e400fade, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 99780d22d6240ce408bd29068196cd8c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 2495663847227730056}
   - component: {fileID: 8639768212092986906}
   m_Layer: 0
-  m_Name: Libro 1
+  m_Name: Libro 4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,14 +117,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8670883910197217950}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00000016292068, y: 1, z: -0.000000021855696, w: 0.0000000754979}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 2.15, y: 0.799, z: -2.752}
   m_LocalScale: {x: 11.694549, y: 3.2284122, z: 17.521856}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8710846465585053634}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!33 &8531841418568197305
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -153,7 +153,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53e72cd27df22b8429681b3488480637, type: 2}
+  - {fileID: 2100000, guid: b0059ef1817bb2840ba4e39cb23600f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -463,7 +463,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8670883910197217950}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 66adfcd6d34866c4da28300925b3cc7a, type: 3}
   m_Name: 

@@ -28,6 +28,18 @@ public class FollowPathOutside : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
             
         }
+        // Después de alcanzar el último punto, mira hacia un sitio específico
+        Quaternion startRotation = origin.rotation;
+        Quaternion endRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+
+        float rotationTime = 0f;
+
+        while (rotationTime < 1.4f)
+        {
+            rotationTime += Time.deltaTime / rotationSpeed;
+            origin.rotation = Quaternion.Slerp(startRotation, endRotation, rotationTime);
+            yield return null;
+        }
     }
 
     IEnumerator RotateThenMove(Transform target)
