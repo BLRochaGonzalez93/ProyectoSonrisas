@@ -44,6 +44,12 @@ public class SplineAdvanced : MonoBehaviour
         return Vector3.Lerp(abc, bcd, t);
     }
 
+    public Point GetPointByIndex(int t)
+    {
+        Point p = pointList[t];
+        return p;
+    }
+
     public Vector3 GetPositionAt(float t)
     {
         if (t == 1)
