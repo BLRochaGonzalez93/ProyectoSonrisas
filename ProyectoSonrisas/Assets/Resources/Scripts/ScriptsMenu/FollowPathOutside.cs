@@ -25,7 +25,7 @@ public class FollowPathOutside : MonoBehaviour
         for (int i = 0; i < targetPoints.Length; i++)
         {   
             yield return StartCoroutine(RotateThenMove(targetPoints[i]));
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.9f);
             
         }
         // Después de alcanzar el último punto, mira hacia un sitio específico

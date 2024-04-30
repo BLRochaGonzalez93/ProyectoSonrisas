@@ -60,7 +60,7 @@ public class RotatingRoom : MonoBehaviour
 
                 if (selectorTransformMap.ContainsKey(hitObject))
                 {
-                    Debug.Log("Objeto detectado: " + hitObject.name);
+                    
 
                     rotationTimer += Time.deltaTime;
 
@@ -69,7 +69,7 @@ public class RotatingRoom : MonoBehaviour
                     {
                         // RotateToTarget(selectorTransformMap[hitObject]);
                         RotateToTarget(selectorTransformMap[hitObject]);
-                        Debug.Log("Objeto rotando hacia: " + selectorTransformMap[hitObject]);
+                        
                         rotationTimer = 0f;
                     }
                 }

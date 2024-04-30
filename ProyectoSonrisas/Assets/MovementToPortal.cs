@@ -16,7 +16,7 @@ public class MovementToPortal : MonoBehaviour
 
 
             //mover carro
-            transform.position = Vector3.MoveTowards(transform.position, portal.transform.position, 2f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, portal.transform.position, 3f * Time.fixedDeltaTime);
         }
     }
 
