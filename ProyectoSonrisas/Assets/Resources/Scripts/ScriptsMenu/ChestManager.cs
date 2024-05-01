@@ -15,13 +15,13 @@ public class ChestManager : MonoBehaviour
     {
           
         
-        Debug.Log("Se ha pulsado");
+        
         panelChest.SetActive(true);
 
     }
     public void hideTooltip()
     {
-        Debug.Log("Se ha dejado de pulsar");
+        
         panelChest.SetActive(false);
     }
 

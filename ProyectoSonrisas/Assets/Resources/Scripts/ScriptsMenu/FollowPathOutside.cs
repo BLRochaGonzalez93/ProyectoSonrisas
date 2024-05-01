@@ -9,8 +9,8 @@ public class FollowPathOutside : MonoBehaviour
  
     public Transform[] targetPoints;
     public float rotationSpeed;
-    
-    
+
+    public Transform lastPoint;
 
     public Transform origin;
     public Transform head;
@@ -25,18 +25,18 @@ public class FollowPathOutside : MonoBehaviour
         for (int i = 0; i < targetPoints.Length; i++)
         {   
             yield return StartCoroutine(RotateThenMove(targetPoints[i]));
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.9f);
             
         }
-        // Después de alcanzar el último punto, mira hacia un sitio específico
+        //// Después de alcanzar el último punto, mira hacia un sitio específico
         Quaternion startRotation = origin.rotation;
-        Quaternion endRotation = Quaternion.LookRotation(Vector3.forward, Vector3.up);
+        Quaternion endRotation = Quaternion.LookRotation(lastPoint.position, Vector3.up);
 
         float rotationTime = 0f;
 
         while (rotationTime < 1.4f)
         {
-            rotationTime += Time.deltaTime / rotationSpeed;
+           rotationTime += Time.deltaTime / rotationSpeed;
             origin.rotation = Quaternion.Slerp(startRotation, endRotation, rotationTime);
             yield return null;
         }
