@@ -23,7 +23,7 @@ public class KeyHUD : MonoBehaviour
     }
 
     private void UpdateHud (){
-        keyText.text = keys.ToString();
+        keyText.text = "Llaves: " + keys.ToString();
     }
 
 }

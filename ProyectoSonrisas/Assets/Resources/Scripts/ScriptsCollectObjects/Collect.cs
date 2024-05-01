@@ -39,6 +39,8 @@ public class Collect : MonoBehaviour
 
     [SerializeField] GameObject weapon;
 
+    private Animator fall;
+
     private GameObject target;
 
     public GameObject door;
@@ -54,7 +56,7 @@ public class Collect : MonoBehaviour
     public int n_enemies;
     public GameObject boss;
 
-    
+    private int counter;
     void Start()
     {
         tomato.SetActive(false);
@@ -73,7 +75,7 @@ public class Collect : MonoBehaviour
 
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
-                if (selectionTime <= 0 && (hit.collider.gameObject.tag == "Key" || hit.collider.gameObject.tag == "Enemy")){
+                if (selectionTime <= 0 && (hit.collider.gameObject.tag == "Key" || hit.collider.gameObject.tag == "Enemy" || hit.collider.gameObject.tag == "Boss")){
                     tomato.SetActive(true);
                     tomato.transform.position = weapon.transform.position;   
                     target = hitObject;
@@ -91,17 +93,47 @@ public class Collect : MonoBehaviour
             if (Vector3.Distance(tomato.transform.position, target.transform.position) < 1)
             {
                 tomato.SetActive(false);
-                target.SetActive(false);
+                
 
                 if (target.CompareTag("Key"))
                 {
+                    target.SetActive(false);
                     keys_collected += 1;
                     print(keys_collected);
                     keyHUD.Keys += 1;
                 }
                 
                 if (target.CompareTag("Enemy")){
-                    enemies_killed += 1;
+                    if (counter < 1)
+                    {
+                        counter ++;
+                    }
+                    else 
+                    {
+                        fall = target.GetComponent<Animator>();
+                        fall.SetBool("fall",true);
+                        target.transform.position = new Vector3(target.transform.position.x,0,target.transform.position.z); 
+                        //target.SetActive(false);
+                        enemies_killed += 1;
+                        counter = 0;
+                    }
+                    
+                }
+
+                if (target.CompareTag("Boss")){
+                    if (counter < 9)
+                    {
+                        counter ++;
+                    }
+                    else 
+                    {
+                        fall = target.GetComponent<Animator>();
+                        fall.SetBool("fall",true);
+                        target.transform.position = new Vector3(target.transform.position.x,0,target.transform.position.z); 
+                        enemies_killed += 1;
+                        counter = 0;
+                    }
+                    
                 }
 
                 if (enemies_killed == n_enemies)
