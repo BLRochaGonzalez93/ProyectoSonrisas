@@ -12,6 +12,7 @@ TagManager:
   - Door
   - Enemy
   - Carro
+  - Boss
   layers:
   - Default
   - TransparentFX

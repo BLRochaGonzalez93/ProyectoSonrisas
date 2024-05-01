@@ -792,6 +792,7 @@ GameObject:
   - component: {fileID: 629552706}
   - component: {fileID: 629552705}
   - component: {fileID: 629552704}
+  - component: {fileID: 629552707}
   m_Layer: 0
   m_Name: Sonrisas - Villanos Con Dianas_4
   m_TagString: Enemy
@@ -887,6 +888,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &629552707
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629552703}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3001a1686f2f26749807ae2af9290178, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &820450012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4134505312059479865, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -1087,6 +1109,7 @@ GameObject:
   - component: {fileID: 1311673420}
   - component: {fileID: 1311673419}
   - component: {fileID: 1311673418}
+  - component: {fileID: 1311673422}
   m_Layer: 0
   m_Name: Sonrisas - Villanos Con Dianas_0 (1)
   m_TagString: Enemy
@@ -1196,6 +1219,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1311673422
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311673417}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3001a1686f2f26749807ae2af9290178, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1395976755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9014170783705847997, guid: 895f6f3c2d334633b5800312285058d2, type: 3}
@@ -1233,9 +1277,10 @@ GameObject:
   - component: {fileID: 1452553075}
   - component: {fileID: 1452553074}
   - component: {fileID: 1452553073}
+  - component: {fileID: 1452553076}
   m_Layer: 0
   m_Name: Sonrisas - Villanos Con Dianas_5
-  m_TagString: Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1328,6 +1373,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &1452553076
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452553072}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3001a1686f2f26749807ae2af9290178, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1502124704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1630,6 +1696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeScreenManager: {fileID: 0}
+  nextScene: 0
 --- !u!1 &1800217865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1677,9 +1744,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124099e1a5e85b944b39787602c8d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
   aliade: {fileID: 1800217865}
   aliade_ref: {fileID: 1263057381}
+  entered: 0
 --- !u!65 &1800217868
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1829,6 +1896,7 @@ GameObject:
   - component: {fileID: 2027011555}
   - component: {fileID: 2027011554}
   - component: {fileID: 2027011553}
+  - component: {fileID: 2027011557}
   m_Layer: 0
   m_Name: Sonrisas - Villanos Con Dianas_0
   m_TagString: Enemy
@@ -1938,6 +2006,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &2027011557
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2027011552}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3001a1686f2f26749807ae2af9290178, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2051900933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1988,9 +2077,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 124099e1a5e85b944b39787602c8d38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
   aliade: {fileID: 1800217865}
   aliade_ref: {fileID: 1263057381}
+  entered: 0
 --- !u!65 &2051900937
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2043,6 +2132,9 @@ MonoBehaviour:
   railResets: 0
   newSplinePrefab: {fileID: 0}
   newSpline: {fileID: 0}
+  doorPrefab: {fileID: 0}
+  portalPrefab: {fileID: 0}
+  portalDoorCreated: 0
 --- !u!114 &2051900939
 MonoBehaviour:
   m_ObjectHideFlags: 0
