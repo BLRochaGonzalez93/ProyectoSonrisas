@@ -251,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rail: {fileID: 0}
+  rngSpline: {fileID: 4594553873199106805, guid: dd821b0079022ee42bfa30b0edd13f46, type: 3}
   plantilla: {fileID: 0}
   cerca:
   - {fileID: 4752924996193158579, guid: 7a37fa2de3548b34abc12d837b422d8c, type: 3}
@@ -268,6 +269,7 @@ MonoBehaviour:
   numPropsMedio: 2
   numPropsLejos: 5
   timer: 0
+  exitRotation: 0
 --- !u!1 &86607107
 GameObject:
   m_ObjectHideFlags: 0
