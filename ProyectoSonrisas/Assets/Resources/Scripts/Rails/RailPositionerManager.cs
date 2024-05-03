@@ -52,7 +52,7 @@ public class RailPositionerManager : MonoBehaviour
             GameObject door =  Instantiate(doorPrefab, currentMeshRail.transform.GetChild(1));
             GameObject portal = Instantiate(portalPrefab, currentMeshRail.transform.GetChild(1));
             portal.GetComponent<SceneTransitionManager>().fadeScreenManager = manager.GetComponent<SceneTransitionManager>().fadeScreenManager;
-            portal.GetComponent<SceneTransitionManager>().nextScene = 3;
+            portal.GetComponent<SceneTransitionManager>().nextScene = 2;
             portalDoorCreated = true;
         }
 

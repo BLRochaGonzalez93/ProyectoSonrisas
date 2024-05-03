@@ -36,5 +36,41 @@ public class PropsRandomGenerator : MonoBehaviour
                 prop.transform.localPosition += Vector3.back * Random.Range(distanciaNada, distanciaCerca);
             }
         }
+
+        for (int i = 0; i < numPropsMedio; i++)
+        {
+            int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
+            Debug.Log(randomPoint);
+            Vector3 pos = spline.GetPointByIndex(randomPoint).position;
+            GameObject prop = Instantiate(medio[Random.Range(0, medio.Count - 1)], meshRail.transform);
+            prop.transform.position = pos;
+            bool rngDir = Random.Range(0, 2) == 1 ? true : false;
+            if (rngDir)
+            {
+                prop.transform.localPosition += Vector3.forward * Random.Range(distanciaCerca, distanciaMedio);
+            }
+            else
+            {
+                prop.transform.localPosition += Vector3.back * Random.Range(distanciaCerca, distanciaMedio);
+            }
+        }
+
+        for (int i = 0; i < numPropsLejos; i++)
+        {
+            int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
+            Debug.Log(randomPoint);
+            Vector3 pos = spline.GetPointByIndex(randomPoint).position;
+            GameObject prop = Instantiate(lejos[Random.Range(0, lejos.Count - 1)], meshRail.transform);
+            prop.transform.position = pos;
+            bool rngDir = Random.Range(0, 2) == 1 ? true : false;
+            if (rngDir)
+            {
+                prop.transform.localPosition += Vector3.forward * Random.Range(distanciaMedio, distanciaLejos);
+            }
+            else
+            {
+                prop.transform.localPosition += Vector3.back * Random.Range(distanciaMedio, distanciaLejos);
+            }
+        }
     }
 }
