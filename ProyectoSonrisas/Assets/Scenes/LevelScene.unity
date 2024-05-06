@@ -282,6 +282,12 @@ MonoBehaviour:
   - {fileID: 919132149155446097, guid: 29769918ea86c2d4185d622c3ff22084, type: 3}
   - {fileID: 919132149155446097, guid: e30d24af6d807b549b03236ee4436168, type: 3}
   - {fileID: 919132149155446097, guid: 4b3a7e80187f3e94f8b7dd0c69c41c20, type: 3}
+  enemigos:
+  - {fileID: 4187362791586217473, guid: 70384fb91c28e194bb2f6a7ef25f01ec, type: 3}
+  - {fileID: 645632923650926493, guid: bdfb3a158ebb13a4f8efa08422560812, type: 3}
+  - {fileID: 4672060931274695829, guid: ec11c472c88517248b9a7dc1a473f9b7, type: 3}
+  - {fileID: 1529902276759565612, guid: 7e8bb9782c607b74b8cfc1bcd0824a86, type: 3}
+  - {fileID: 2837429630446624305, guid: fe2aa29b0f6ceff4c9d8527232868c5c, type: 3}
   numPropsCerca: 10
   numPropsMedio: 4
   numPropsLejos: 20
