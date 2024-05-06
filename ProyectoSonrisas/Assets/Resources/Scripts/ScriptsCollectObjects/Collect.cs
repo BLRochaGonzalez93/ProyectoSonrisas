@@ -10,6 +10,7 @@ using UnityEngine.XR.Interaction;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 
@@ -38,6 +39,7 @@ public class Collect : MonoBehaviour
     [SerializeField] GameObject tomato;
 
     [SerializeField] GameObject weapon;
+    public float fireSpeed = 20f;
 
     private Animator fall;
 
@@ -59,19 +61,32 @@ public class Collect : MonoBehaviour
     private int counter;
     void Start()
     {
-        tomato.SetActive(false);
+       //tomato.SetActive(false);
+        //XRGrabInteractable grabblable= GetComponent<XRGrabInteractable>();
+        //grabblable.activated.AddListener(FireTomato);
     }
 
     void Update()
     {
+        
+    }
+
+   
+   
+
+
+
+    public void ShootWithEyes()
+    {
         float shootValue = shoot.action.ReadValue<float>();
-    
+
         RaycastHit hit;
         //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0f));
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
+
 
                 selectionTime -= Time.deltaTime;
                 Debug.Log("Objeto detectado: " + hitObject.name);
@@ -81,14 +96,13 @@ public class Collect : MonoBehaviour
                     target = hitObject;
                     selectionTime = 3f;
 
-                    
 
             }
-            
+
         }
         if (tomato.activeSelf)
         {
-            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed*Time.deltaTime);
+            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed * Time.deltaTime);
 
             if (Vector3.Distance(tomato.transform.position, target.transform.position) < 1)
             {
@@ -102,7 +116,7 @@ public class Collect : MonoBehaviour
                     print(keys_collected);
                     keyHUD.Keys += 1;
                 }
-                
+
                 if (target.CompareTag("Enemy")){
                     if (counter < 1)
                     {
@@ -134,6 +148,7 @@ public class Collect : MonoBehaviour
                         counter = 0;
                     }
                     
+
                 }
 
                 if (enemies_killed == n_enemies)
