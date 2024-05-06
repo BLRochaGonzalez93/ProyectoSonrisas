@@ -10,6 +10,7 @@ using UnityEngine.XR.Interaction;
 using UnityEngine.XR.Interaction.Toolkit.Inputs;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR.Interaction.Toolkit;
 
 
 
@@ -38,6 +39,7 @@ public class Collect : MonoBehaviour
     [SerializeField] GameObject tomato;
 
     [SerializeField] GameObject weapon;
+    public float fireSpeed = 20f;
 
     private GameObject target;
 
@@ -57,7 +59,9 @@ public class Collect : MonoBehaviour
     
     void Start()
     {
-        tomato.SetActive(false);
+       //tomato.SetActive(false);
+        //XRGrabInteractable grabblable= GetComponent<XRGrabInteractable>();
+        //grabblable.activated.AddListener(FireTomato);
     }
 
     void Update()
@@ -65,12 +69,8 @@ public class Collect : MonoBehaviour
         
     }
 
-
-    public void ShootWithWeapon()
-    {
-
-    }
-
+   
+   
 
 
 

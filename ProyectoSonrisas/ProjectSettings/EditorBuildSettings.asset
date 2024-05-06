@@ -14,15 +14,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Pathfinder.unity
     guid: c8fba9fcb3f895e47a1f0d814a9e753d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MenuScene 1.unity
     guid: 3b0423030ddabaa48ba99d05556c1e76
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/LevelScene.unity
     guid: a2d74af80e97e804083af3a8b067b819
   - enabled: 0
     path: Assets/Scenes/Boss.unity
     guid: ecc3de07b99c22e4bbb2f880abd15f68
+  - enabled: 0
+    path: Assets/Scenes/CollectKeys.unity
+    guid: 24db8a9e9674b0140a096ec60bc40bc1
+  - enabled: 0
+    path: Assets/Scenes/LevelScenePruebasCollect.unity
+    guid: 8b6196a338de1ba49a3e9942092cb774
+  - enabled: 1
+    path: Assets/Scenes/Boss 1.unity
+    guid: cfea21371b88085438447be00ce1c4e2
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: dc5a169419fa04987b057f65238cf3ba, type: 2}
