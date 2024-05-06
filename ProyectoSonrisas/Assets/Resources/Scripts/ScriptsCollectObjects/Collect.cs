@@ -62,31 +62,46 @@ public class Collect : MonoBehaviour
 
     void Update()
     {
+        
+    }
+
+
+    public void ShootWithWeapon()
+    {
+
+    }
+
+
+
+
+    public void ShootWithEyes()
+    {
         float shootValue = shoot.action.ReadValue<float>();
-    
+
         RaycastHit hit;
         //Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f,0.5f,0f));
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
         if (Physics.Raycast(ray, out hit))
         {
             GameObject hitObject = hit.collider.gameObject;
 
-                selectionTime -= Time.deltaTime;
-                Debug.Log("Objeto detectado: " + hitObject.name);
-                if (selectionTime <= 0 && (hit.collider.gameObject.tag == "Key" || hit.collider.gameObject.tag == "Enemy")){
-                    tomato.SetActive(true);
-                    tomato.transform.position = weapon.transform.position;   
-                    target = hitObject;
-                    selectionTime = 3f;
+            selectionTime -= Time.deltaTime;
+            Debug.Log("Objeto detectado: " + hitObject.name);
+            if (selectionTime <= 0 && (hit.collider.gameObject.tag == "Key" || hit.collider.gameObject.tag == "Enemy"))
+            {
+                tomato.SetActive(true);
+                tomato.transform.position = weapon.transform.position;
+                target = hitObject;
+                selectionTime = 3f;
 
-                    
+
 
             }
-            
+
         }
         if (tomato.activeSelf)
         {
-            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed*Time.deltaTime);
+            tomato.transform.position = Vector3.MoveTowards(tomato.transform.position, target.transform.position, speed * Time.deltaTime);
 
             if (Vector3.Distance(tomato.transform.position, target.transform.position) < 1)
             {
@@ -99,8 +114,9 @@ public class Collect : MonoBehaviour
                     print(keys_collected);
                     keyHUD.Keys += 1;
                 }
-                
-                if (target.CompareTag("Enemy")){
+
+                if (target.CompareTag("Enemy"))
+                {
                     enemies_killed += 1;
                 }
 
