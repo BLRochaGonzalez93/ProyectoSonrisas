@@ -52,7 +52,7 @@ public class RailPositionerManager : MonoBehaviour
             GameObject door =  Instantiate(doorPrefab, currentMeshRail.transform.GetChild(1));
             GameObject portal = Instantiate(portalPrefab, currentMeshRail.transform.GetChild(1));
             portal.GetComponent<SceneTransitionManager>().fadeScreenManager = manager.GetComponent<SceneTransitionManager>().fadeScreenManager;
-            portal.GetComponent<SceneTransitionManager>().nextScene = 3;
+            portal.GetComponent<SceneTransitionManager>().nextScene = 2;
             portalDoorCreated = true;
         }
 
@@ -66,9 +66,8 @@ public class RailPositionerManager : MonoBehaviour
             if (spawnTimer > pathSpawnerFactor)
             {
 
-                //Pruebas
-                //speed += 1f;
                 Destroy(previous2MRail);
+                //Pruebas
                 int rng = UnityEngine.Random.Range(0, 23);
 
                 //Definitivo
@@ -120,7 +119,7 @@ public class RailPositionerManager : MonoBehaviour
                                                 spline.GetAnchorList().ToArray()[spline.GetAnchorList().Count - 2].handleBPosition + (Quaternion.AngleAxis(exitRotation * 45, Vector3.up) * rail.splinePrefab.GetAnchorAtIndex(0).handleBPosition));
                     }
                 }
-
+                GetComponent<PropsRandomGenerator>().GenerateProps(spline, rail, meshRail);
 
 
                 int fRot = exitRotation + rail.finalRotation;
@@ -173,6 +172,7 @@ public class RailPositionerManager : MonoBehaviour
 
                     newSpline.SetAnchorValues(newSpline.GetAnchorAtIndex(i), newPosition, newHandleAPosition, newHandleBPosition);
                 }
+                GetComponent<PropsRandomGenerator>().GenerateProps(spline, rail, meshRail);
 
                 newSpline.transform.position = meshRail.transform.position;
 
