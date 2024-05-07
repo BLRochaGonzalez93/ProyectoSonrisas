@@ -9,6 +9,7 @@ public class PropsRandomGenerator : MonoBehaviour
     public List<GameObject> medio;
     public List<GameObject> lejos;
     public List<GameObject> enemigos;
+    public List<GameObject> llaves;
     public int numPropsCerca;
     public int numPropsMedio;
     public int numPropsLejos;
@@ -83,6 +84,30 @@ public class PropsRandomGenerator : MonoBehaviour
                 GameObject prop = Instantiate(enemigos[Random.Range(0, enemigos.Count - 1)], meshRail.transform);
                 prop.transform.position = pos;
                 prop.transform.Translate(0f, 1f, 0f);
+
+                prop.transform.LookAt(gameObject.transform);
+
+                bool rngDir = Random.Range(0, 2) == 1 ? true : false;
+                if (rngDir)
+                {
+                    prop.transform.localPosition += Vector3.forward * Random.Range(distanciaNada, distanciaMedio);
+                }
+                else
+                {
+                    prop.transform.localPosition += Vector3.back * Random.Range(distanciaNada, distanciaMedio);
+                }
+            }
+        }
+
+        if (GetComponent<RailPositionerManager>().railResets == 3)
+        {
+            for (int i = 0; i < Random.Range(0, 3); i++)
+            {
+                int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
+                Vector3 pos = spline.GetPointByIndex(randomPoint).position;
+                GameObject prop = Instantiate(llaves[Random.Range(0, llaves.Count - 1)], meshRail.transform);
+                prop.transform.position = pos;
+                prop.transform.Translate(0f, 2f, 0f);
 
                 prop.transform.LookAt(gameObject.transform);
 

@@ -234,7 +234,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1.4427024, y: 1.5052668, z: 2.1993868}
   m_Center: {x: 5.074154e-15, y: 1.1264269, z: -0.108912386}
@@ -288,6 +288,8 @@ MonoBehaviour:
   - {fileID: 4672060931274695829, guid: ec11c472c88517248b9a7dc1a473f9b7, type: 3}
   - {fileID: 1529902276759565612, guid: 7e8bb9782c607b74b8cfc1bcd0824a86, type: 3}
   - {fileID: 2837429630446624305, guid: fe2aa29b0f6ceff4c9d8527232868c5c, type: 3}
+  llaves:
+  - {fileID: 3308562991917080629, guid: a71667af9a9c6c244ab886aa273a11e6, type: 3}
   numPropsCerca: 10
   numPropsMedio: 4
   numPropsLejos: 20
