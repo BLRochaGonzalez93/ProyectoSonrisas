@@ -22,7 +22,6 @@ public class PropsRandomGenerator : MonoBehaviour
         for (int i = 0; i < numPropsCerca; i++)
         {
             int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
-            Debug.Log(randomPoint);
             Vector3 pos = spline.GetPointByIndex(randomPoint).position;
             GameObject prop = Instantiate(cerca[Random.Range(0, cerca.Count-1)], meshRail.transform);
             prop.transform.position = pos;
@@ -42,7 +41,6 @@ public class PropsRandomGenerator : MonoBehaviour
         for (int i = 0; i < numPropsMedio; i++)
         {
             int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
-            Debug.Log(randomPoint);
             Vector3 pos = spline.GetPointByIndex(randomPoint).position;
             GameObject prop = Instantiate(medio[Random.Range(0, medio.Count - 1)], meshRail.transform);
             prop.transform.position = pos;
@@ -62,7 +60,6 @@ public class PropsRandomGenerator : MonoBehaviour
         for (int i = 0; i < numPropsLejos; i++)
         {
             int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
-            Debug.Log(randomPoint);
             Vector3 pos = spline.GetPointByIndex(randomPoint).position;
             GameObject prop = Instantiate(lejos[Random.Range(0, lejos.Count - 1)], meshRail.transform);
             prop.transform.position = pos;
@@ -82,7 +79,6 @@ public class PropsRandomGenerator : MonoBehaviour
             for (int i = 0; i < Random.Range(1, 6); i++)
             {
                 int randomPoint = Random.Range(spline.GetPointList().Count - 360, spline.GetPointList().Count);
-                Debug.Log(randomPoint);
                 Vector3 pos = spline.GetPointByIndex(randomPoint).position;
                 GameObject prop = Instantiate(enemigos[Random.Range(0, enemigos.Count - 1)], meshRail.transform);
                 prop.transform.position = pos;
