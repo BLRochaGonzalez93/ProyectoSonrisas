@@ -191,7 +191,7 @@ MonoBehaviour:
   previousMeshRail: {fileID: 1598364969424341715}
   previous2MRail: {fileID: 0}
   exitRotation: 0
-  speed: 50
+  speed: 15
   timeValue: 0
   pathSpawnerFactor: 0
   railCounter: 0

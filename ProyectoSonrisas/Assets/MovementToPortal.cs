@@ -24,7 +24,7 @@ public class MovementToPortal : MonoBehaviour
     IEnumerator MoveCarToPortalCoroutine()
     {
         // Esperar 1 segundo
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(2f);
         transform.SetParent(origin.transform,true);
         // Mover el carro hacia el portal
           origin.transform.position = Vector3.MoveTowards(origin.transform.position, portal.transform.position, 3f * Time.fixedDeltaTime);
