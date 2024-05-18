@@ -27,7 +27,7 @@ public class ShootWeapon : MonoBehaviour
         GameObject spawnTomato = Instantiate(tomato);
         spawnTomato.transform.position = weapon.transform.position;
         spawnTomato.GetComponent<Rigidbody>().velocity = weapon.transform.forward * fireSpeed;
-        Destroy(spawnTomato, 4f);
+        Destroy(spawnTomato, 5f);
     }
 
 }
