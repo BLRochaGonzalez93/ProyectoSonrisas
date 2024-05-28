@@ -13,6 +13,9 @@ TagManager:
   - Enemy
   - Carro
   - Boss
+  - Tomato
+  - Aliade
+  - AliadeRef
   layers:
   - Default
   - TransparentFX

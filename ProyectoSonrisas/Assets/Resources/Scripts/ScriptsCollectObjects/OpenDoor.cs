@@ -9,8 +9,8 @@ public class OpenDoor : MonoBehaviour
 
     private void Start()
     {
-       // aliade = GameObject.FindWithTag("Respawn").gameObject.transform.Find("aliade").gameObject;
-        //aliade_ref = GameObject.FindWithTag("Respawn").gameObject.transform.Find("aliade_ref").gameObject;
+        aliade = GameObject.FindGameObjectWithTag("Aliade");
+        aliade_ref = GameObject.FindGameObjectWithTag("AliadeRef");
     }
 
     void Update()
@@ -18,7 +18,7 @@ public class OpenDoor : MonoBehaviour
         if (entered)
         {
             //aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, transform.position, GameObject.FindWithTag("Respawn").GetComponent<RailPositionerManager>().speed * Time.deltaTime);
-            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, transform.position, 15f* Time.deltaTime);
+            aliade.transform.position = Vector3.MoveTowards(aliade.transform.position, transform.position, 18f* Time.deltaTime);
         }
         else
         {
